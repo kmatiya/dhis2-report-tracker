@@ -20,12 +20,13 @@ class ReportGenerator:
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
         periods_df = pd.read_csv(self.__config["periods_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
+        report_due_day = self.__config["report_due_day"]
         print("Create files for each report")
         report_dict = []
         for each_endpoint in self.__config["endpoints"]:
-            reports_df = pd.read_csv(each_endpoint["report_file_name"])
-            org_units_name = reports_df["org_units"].tolist()[0].split(",")
-            for idx, x in reports_df.iterrows():
+            report_config_df = pd.read_csv(each_endpoint["report_file_name"])
+            org_units_name = report_config_df["org_units"].tolist()[0].split(",")
+            for idx, x in report_config_df.iterrows():
                 report_name = str(x['name'])
                 print(report_name)
                 complete_report_path = os.path.join(base_location, report_name)
@@ -39,20 +40,31 @@ class ReportGenerator:
                     for index, row in periods_df.iterrows():
                         report = {
                             "Date": row["date"],
-                            "facility": org_unit_name}
+                            "facility": org_unit_name,
+                            "report name": report_name}
                         if report_df.empty:
                             report["report in the system"] = "No"
-                            report["report"] = report_name
-
+                            report["entered on time"] = "No"
                         else:
                             df_x = report_df.loc[
                             (report_df["period"] == str(row["period"])) & (report_df["orgUnit"] == str(org_unit_id))]
                             if df_x.empty:
                                 report["report in the system"] = "No"
-                                report["report"] = report_name
+                                report["entered on time"] = "No"
                             else:
                                 report["report in the system"] = "Yes"
-                                report["report"] = report_name
+                                date_created_str = report_df["created"].iat[0]
+                                date_created_str[0:5] = date_created_str
+                                date_format = "%Y-%m-%d"
+
+                                # Convert string to datetime using strptime
+                                date_created = datetime.strptime(date_created_str, date_format)
+                                day_created = date_created.day
+                                if day_created <= report_due_day:
+                                    report["entered on time"] = "Yes"
+                                else:
+                                    report["entered on time"] = "No"
+                                f = "hello"
                         report_dict.append(report)
             final_df = pd.DataFrame.from_records(report_dict)
             final_df.to_excel(writer, index=False, sheet_name=report_file)
