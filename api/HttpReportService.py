@@ -21,6 +21,7 @@ class HttpReportService:
                 locations = reports_df["org_units"].tolist()[0].split(",")
                 for location in locations:
                     org_unit = org_units_df.loc[org_units_df["Org Unit"] == str(location)]["Org Unit Id"].iat[0]
+                    org_unit_name = org_units_df.loc[org_units_df["Org Unit"] == str(location)]["Org Unit"].iat[0]
                     start_date = each_endpoint['default_start_date']
                     end_date = date.today()
                     url = each_endpoint["base"] + each_report["resource"]
@@ -32,12 +33,13 @@ class HttpReportService:
                         'endDate': end_date
                     }
 
-                    print("Request for " + each_report["name"] + " for the following parameters: " + str(params))
+                    print("Request for " + each_report[
+                        "name"] + "for " + org_unit_name + " for the following parameters: " + str(params))
                     get_report = requests.get(url, params=params,
                                               auth=HTTPBasicAuth(username=each_endpoint["username"],
                                                                  password=each_endpoint["password"]))
                     if get_report.status_code == 200:
-                        print("Successful Request for " + each_report["name"])
+                        print("Successful Request for " + each_report["name"] + "for " + org_unit_name)
                         report_json = json.loads(get_report.text)
 
                         for e in report_json['dataValues']:
