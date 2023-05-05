@@ -9,6 +9,7 @@ config = {
             "base": "",
             "username": "",
             "password": "",
+            "report_file_name": "reports.csv",
             "use_start_date_in_request": True,
             "use_end_date_in_request": True,
             "default_start_date": "2020-01-01",
@@ -18,31 +19,23 @@ config = {
                     "id": "Rmh4wKR794k",
                     "name": "Neno District Hospital"
                 },
-                {
-                    "id": "jBJ1nrUXKIu",
-                    "name": "Lisungwi Community hospital"
-                }
             ],
         },
     ],
     "reports": [
         {
             "resource": "/dataValueSets",
-            "dataSet": "XttTY8YbYKB",
-            "name": "Clerks reports",
+            "dataSet": "GzO4xPVk8pl",
+            "name": "ANC Monthly Facility Report",
             "assigned_to": "Bright",
             "org_units": [
                 {
                     "id": "Rmh4wKR794k",
                     "name": "Neno District Hospital"
                 },
-                {
-                    "id": "jBJ1nrUXKIu",
-                    "name": "Lisungwi Community hospital"
-                }
             ],
             "column_order": [
-                 "NX9ITIOkqCw", "poyokFLTPMo", "WYUB8EK3P02",
+                 #"NX9ITIOkqCw", "poyokFLTPMo", "WYUB8EK3P02",
             ]
         },
     ]
