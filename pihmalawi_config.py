@@ -14,29 +14,6 @@ config = {
             "use_end_date_in_request": True,
             "default_start_date": "2020-01-01",
             "default_end_date": "2023-06-30",
-            "org_units": [
-                {
-                    "id": "Rmh4wKR794k",
-                    "name": "Neno District Hospital"
-                },
-            ],
         },
     ],
-    "reports": [
-        {
-            "resource": "/dataValueSets",
-            "dataSet": "GzO4xPVk8pl",
-            "name": "ANC Monthly Facility Report",
-            "assigned_to": "Bright",
-            "org_units": [
-                {
-                    "id": "Rmh4wKR794k",
-                    "name": "Neno District Hospital"
-                },
-            ],
-            "column_order": [
-                 #"NX9ITIOkqCw", "poyokFLTPMo", "WYUB8EK3P02",
-            ]
-        },
-    ]
 }
