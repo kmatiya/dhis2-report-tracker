@@ -18,7 +18,9 @@ class ReportGenerator:
                                 engine_kwargs={'options': {'strings_to_numbers': True}})
         base_location = self.__config["base_file_path"]
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
-        periods_df = pd.read_csv(self.__config["periods_file_name"])
+        start_date = self.__config["default_start_date"]
+        end_date = datetime.today()
+        periods = pd.date_range(start_date, end_date, freq="M").to_list()
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         report_due_day = self.__config["report_due_day"]
         print("Create files for each report")
@@ -37,9 +39,12 @@ class ReportGenerator:
                     print(report_df.head())
                     org_unit_name = org_units_name[index]
                     org_unit_id = org_units_df.loc[org_units_df["Org Unit"] == org_unit_name]["Org Unit Id"].iat[0]
-                    for index, row in periods_df.iterrows():
+                    for row in periods:
+                        #split_date = str(row).split("-")
+                        #period = split_date[0] + split_date[1]
+                        report_date = row.strftime("%d/%m/%Y")
                         report = {
-                            "Date": row["date"],
+                            "Date": report_date,
                             "facility": org_unit_name,
                             "report name": report_name}
                         if report_df.empty:
@@ -64,7 +69,6 @@ class ReportGenerator:
                                     report["entered on time"] = "Yes"
                                 else:
                                     report["entered on time"] = "No"
-                                f = "hello"
                         report_dict.append(report)
             final_df = pd.DataFrame.from_records(report_dict)
             final_df.to_excel(writer, index=False, sheet_name=report_file)
