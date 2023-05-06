@@ -2,12 +2,14 @@
 from api.FolderCreator import FolderCreator
 from api.HttpReportService import HttpReportService
 from api.ReportGenerator import ReportGenerator
+from datetime import datetime
 # from config import config
 # if using pihmalawi
 from pihmalawi_config import config
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    print("Starting time" + str(datetime.now()))
     http_report_service = HttpReportService(config)
     print("Creating report Folders successfully")
     print("Pulling reports from server has started")
