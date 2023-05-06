@@ -18,14 +18,14 @@ class ReportGenerator:
                                 engine_kwargs={'options': {'strings_to_numbers': True}})
         base_location = self.__config["base_file_path"]
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
-        start_date = self.__config["default_start_date"]
-        end_date = datetime.today()
-        periods = pd.date_range(start_date, end_date, freq="M").to_list()
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         report_due_day = self.__config["report_due_day"]
         print("Create files for each report")
         report_dict = []
         for each_endpoint in self.__config["endpoints"]:
+            start_date = each_endpoint["default_start_date"]
+            end_date = datetime.today()
+            periods = pd.date_range(start_date, end_date, freq="M").to_list()
             report_config_df = pd.read_csv(each_endpoint["report_file_name"])
             org_units_name = report_config_df["org_units"].tolist()[0].split(",")
             for idx, x in report_config_df.iterrows():
@@ -40,9 +40,10 @@ class ReportGenerator:
                     org_unit_name = org_units_name[index]
                     org_unit_id = org_units_df.loc[org_units_df["Org Unit"] == org_unit_name]["Org Unit Id"].iat[0]
                     for row in periods:
-                        #split_date = str(row).split("-")
-                        #period = split_date[0] + split_date[1]
+                        split_date = str(row).split("-")
+                        period = split_date[0] + split_date[1]
                         report_date = row.strftime("%d/%m/%Y")
+
                         report = {
                             "Date": report_date,
                             "facility": org_unit_name,
@@ -52,14 +53,14 @@ class ReportGenerator:
                             report["entered on time"] = "No"
                         else:
                             df_x = report_df.loc[
-                            (report_df["period"] == str(row["period"])) & (report_df["orgUnit"] == str(org_unit_id))]
+                            (report_df["period"] == period) & (report_df["orgUnit"] == str(org_unit_id))]
                             if df_x.empty:
                                 report["report in the system"] = "No"
                                 report["entered on time"] = "No"
                             else:
                                 report["report in the system"] = "Yes"
-                                date_created_str = report_df["created"].iat[0]
-                                date_created_str[0:5] = date_created_str
+                                date_created_str = df_x["created"].iat[0]
+                                date_created_str = date_created_str[0:10]
                                 date_format = "%Y-%m-%d"
 
                                 # Convert string to datetime using strptime
@@ -69,6 +70,8 @@ class ReportGenerator:
                                     report["entered on time"] = "Yes"
                                 else:
                                     report["entered on time"] = "No"
+                                report["date entered in system"] = date_created_str
+                                report["days difference from due date"] = day_created - report_due_day
                         report_dict.append(report)
             final_df = pd.DataFrame.from_records(report_dict)
             final_df.to_excel(writer, index=False, sheet_name=report_file)
