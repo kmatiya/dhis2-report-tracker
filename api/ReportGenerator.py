@@ -60,10 +60,11 @@ class ReportGenerator:
                     for row in periods:
                         split_date = str(row).split("-")
                         period = split_date[0] + split_date[1]
-                        report_date = row.strftime("%d/%m/%Y")
+                        row = str(row)[0:10]
+                        report_date = datetime.strptime(row, "%Y-%m-%d")
 
                         report = {
-                            "Date": report_date,
+                            "Date": report_date.date(),
                             "facility": org_unit_name,
                             "report name": report_name}
                         if report_df.empty:
@@ -91,7 +92,7 @@ class ReportGenerator:
                                         report["entered on time"] = "Yes"
                                     else:
                                         report["entered on time"] = "No"
-                                    report["date entered in system"] = date_created_str
+                                    report["date entered in system"] = date_created.date()
                                     report["days difference from due date"] = day_created - report_due_day
 
                                 if mode_of_generation != "tracker":
@@ -104,7 +105,8 @@ class ReportGenerator:
                                         if "categoryOptionCombo" in data_values:
                                             category_option_combo = data_values["categoryOptionCombo"]
                                             category_option_combo_name = category_option_combinations_df.loc[
-                                                category_option_combinations_df["id"] == category_option_combo]["name"].iat[0]
+                                                category_option_combinations_df["id"] == category_option_combo][
+                                                "name"].iat[0]
                                             report[column_name + " " + category_option_combo_name] = value
                                         else:
                                             report[column_name] = value

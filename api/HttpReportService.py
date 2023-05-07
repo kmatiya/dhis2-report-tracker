@@ -18,8 +18,9 @@ class HttpReportService:
             print(reports_df.head())
             for index, each_report in reports_df.iterrows():
                 reports = []
-                locations = reports_df["org_units"].tolist()[0].split(",")
-                for location in locations:
+                locations_str = each_report.to_dict()["org_units"]
+                locations_list = locations_str.split(",")
+                for location in locations_list:
                     org_unit = org_units_df.loc[org_units_df["Org Unit"] == str(location)]["Org Unit Id"].iat[0]
                     org_unit_name = org_units_df.loc[org_units_df["Org Unit"] == str(location)]["Org Unit"].iat[0]
                     start_date = each_endpoint['default_start_date']
