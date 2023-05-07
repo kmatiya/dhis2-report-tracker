@@ -26,6 +26,7 @@ class ReportGenerator:
         base_location = self.__config["base_file_path"]
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
+        category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"])
         report_due_day = self.__config["report_due_day"]
         print("Create files for each report")
 
@@ -95,12 +96,18 @@ class ReportGenerator:
 
                                 if mode_of_generation != "tracker":
                                     for key, data_element_series in df_x.iterrows():
-                                        data_element_dict = data_element_series.to_dict()
-                                        value = data_element_dict['value']
-                                        data_element = data_element_dict['dataElement']
+                                        data_values = data_element_series.to_dict()
+                                        value = data_values['value']
+                                        data_element = data_values['dataElement']
                                         column_name = data_elements_df.loc[data_elements_df["Data Element Id"] ==
                                                                            data_element]["Data Element"].iat[0]
-                                        report[column_name] = value
+                                        if "categoryOptionCombo" in data_values:
+                                            category_option_combo = data_values["categoryOptionCombo"]
+                                            category_option_combo_name = category_option_combinations_df.loc[
+                                                category_option_combinations_df["id"] == category_option_combo]["name"].iat[0]
+                                            report[column_name + " " + category_option_combo_name] = value
+                                        else:
+                                            report[column_name] = value
 
                         report_dict.append(report)
                     if mode_of_generation != "tracker":
