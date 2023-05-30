@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 from datetime import date
 import os
 import os.path
@@ -87,14 +87,15 @@ class ReportGenerator:
                                     date_format = "%Y-%m-%d"
 
                                     # Convert string to datetime using strptime
+                                    expected_entry_date = report_date + timedelta(days=report_due_day)
                                     date_created = datetime.strptime(date_created_str, date_format)
-                                    day_created = date_created.day
-                                    if day_created <= report_due_day:
+                                    days_diff = (date_created - expected_entry_date).days
+                                    if days_diff <= 0:
                                         report["entered on time"] = "Yes"
                                     else:
                                         report["entered on time"] = "No"
                                     report["date entered in system"] = date_created.date()
-                                    report["days difference from due date"] = day_created - report_due_day
+                                    report["days difference from due date"] = days_diff
 
                                 if mode_of_generation != "tracker":
                                     for key, data_element_series in df_x.iterrows():
