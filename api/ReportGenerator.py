@@ -35,7 +35,7 @@ class ReportGenerator:
             end_date = datetime.today()
             periods = pd.date_range(start_date, end_date, freq="M").to_list()
             report_config_df = pd.read_csv(each_endpoint["report_file_name"])
-            org_units_name = report_config_df["org_units"].tolist()[0].split(",")
+
             if mode_of_generation != "tracker":
                 report_file = self.__config["full_report_file_name"]
                 file_name = report_file + '.xlsx'
@@ -48,6 +48,7 @@ class ReportGenerator:
 
                 report_name = str(x['name'])
                 report_name = report_name[0:30].strip()
+                org_units_name = x["org_units"].split(",")
                 print(report_name)
                 complete_report_path = os.path.join(base_location, report_name)
                 reports_by_name = self.__reports[int(idx)]
@@ -107,7 +108,7 @@ class ReportGenerator:
                                             category_option_combo_name = category_option_combinations_df.loc[
                                                 category_option_combinations_df["id"] == category_option_combo][
                                                 "name"].iat[0]
-                                            report[column_name + " " + category_option_combo_name] = value
+                                            report[str(column_name) + " " + str(category_option_combo_name)] = value
                                         else:
                                             report[column_name] = value
 
