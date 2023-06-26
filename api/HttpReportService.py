@@ -27,11 +27,13 @@ class HttpReportService:
                     end_date = date.today()
                     url = each_endpoint["base"] + each_report["resource"]
                     data_set = each_report["data_set"]
+                    frequency = each_report["frequency"]
                     params = {
                         "dataSet": data_set,
                         "orgUnit": org_unit,
                         'startDate': start_date,
-                        'endDate': end_date
+                        'endDate': end_date,
+                        'frequency': frequency
                     }
 
                     print("Request for " + each_report[
