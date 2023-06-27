@@ -87,7 +87,8 @@ class ReportGenerator:
                         report = {
                             "Date": report_date.date(),
                             "facility": org_unit_name,
-                            "report name": report_name}
+                            "report name": report_name,
+                            "frequency": report_frequency}
                         if report_df.empty:
                             if mode_of_generation == "tracker":
                                 report["report in the system"] = "No"
