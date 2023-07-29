@@ -98,26 +98,24 @@ class ReportGenerator:
                             df_x = report_df.loc[
                                 (report_df["period"] == period) & (report_df["orgUnit"] == str(org_unit_id))]
                             if df_x.empty:
-                                if mode_of_generation == "tracker":
-                                    report["report in the system"] = "No"
-                                    report["entered on time"] = "No"
+                                report["report in the system"] = "No"
+                                report["entered on time"] = "No"
                             else:
-                                if mode_of_generation == "tracker":
-                                    report["report in the system"] = "Yes"
-                                    date_created_str = df_x["created"].iat[0]
-                                    date_created_str = date_created_str[0:10]
-                                    date_format = "%Y-%m-%d"
+                                report["report in the system"] = "Yes"
+                                date_created_str = df_x["created"].iat[0]
+                                date_created_str = date_created_str[0:10]
+                                date_format = "%Y-%m-%d"
 
-                                    # Convert string to datetime using strptime
-                                    expected_entry_date = report_date + timedelta(days=report_due_day)
-                                    date_created = datetime.strptime(date_created_str, date_format)
-                                    days_diff = (date_created - expected_entry_date).days
-                                    if days_diff <= 0:
-                                        report["entered on time"] = "Yes"
-                                    else:
-                                        report["entered on time"] = "No"
-                                    report["date entered in system"] = date_created.date()
-                                    report["days difference from due date"] = days_diff
+                                # Convert string to datetime using strptime
+                                expected_entry_date = report_date + timedelta(days=report_due_day)
+                                date_created = datetime.strptime(date_created_str, date_format)
+                                days_diff = (date_created - expected_entry_date).days
+                                if days_diff <= 0:
+                                    report["entered on time"] = "Yes"
+                                else:
+                                    report["entered on time"] = "No"
+                                report["date entered in system"] = date_created.date()
+                                report["days difference from due date"] = days_diff
 
                                 if mode_of_generation != "tracker":
                                     for key, data_element_series in df_x.iterrows():
