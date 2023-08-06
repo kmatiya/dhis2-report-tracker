@@ -42,7 +42,7 @@ class HttpReportService:
                                               auth=HTTPBasicAuth(username=each_endpoint["username"],
                                                                  password=each_endpoint["password"]))
                     if get_report.status_code == 200:
-                        print("Successful Request for " + each_report["name"] + " for " + org_unit_name)
+                        print("Successful Request for " + each_report["name"] + "for " + org_unit_name)
                         report_json = json.loads(get_report.text)
 
                         for e in report_json['dataValues']:
