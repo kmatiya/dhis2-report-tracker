@@ -46,7 +46,6 @@ class ReportGenerator:
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"])
-        report_due_day = self.__config["report_due_day"]
         print("Create files for each report")
 
         for each_endpoint in self.__config["endpoints"]:
@@ -64,6 +63,7 @@ class ReportGenerator:
                 report_name = str(x['name'])
                 start_date = each_endpoint["default_start_date"]
                 end_date = datetime.today()
+                report_due_day = x["report_due_day"]
                 report_frequency = str(x['frequency'])
                 periods = self.get_dhis2_period(start_date, end_date, report_frequency)
                 report_name = report_name[0:30].strip()
