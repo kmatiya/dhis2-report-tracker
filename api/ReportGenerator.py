@@ -90,9 +90,8 @@ class ReportGenerator:
                             "report name": report_name,
                             "frequency": report_frequency}
                         if report_df.empty:
-                            if mode_of_generation == "tracker":
-                                report["report in the system"] = "No"
-                                report["entered on time"] = "No"
+                            report["report in the system"] = "No"
+                            report["entered on time"] = "No"
                         else:
                             test_period = report_df["period"].iat[0]
                             df_x = report_df.loc[
