@@ -122,49 +122,53 @@ class ReportGenerator:
                                 report_conditions = conditions_df.loc[(conditions_df["data_set"] == data_set) &
                                                                       (conditions_df[
                                                                            "facility"] == org_unit_name)]
-                                # add if statement when report_conditions is empty
-                                for id, data_element in report_conditions.iterrows():
-                                    is_lower = "No"
-                                    is_upper = "No"
-                                    is_null = "Yes"
-                                    value = ''
 
-                                    column_name = data_element["Data Element"]
-                                    condition = data_element["Data Element Id"]
+                                if not report_conditions.empty:
+                                    for id, each_condition in report_conditions.iterrows():
+                                        is_lower = "No"
+                                        is_upper = "No"
+                                        is_null = "Yes"
+                                        value = ''
 
-                                    # Check if the current data element exists in the dataValues
-                                    df_x_filtered = df_x[df_x['dataElement'] == condition]
+                                        column_name = each_condition["Data Element"]
+                                        condition = each_condition["Data Element Id"]
+                                        category_option_combo_id = str(each_condition["category_option_combo_id"])
+                                        category_option_combo_name = str(each_condition["category_option_combo_name"])
+                                        df_x_filtered = df_x[df_x['dataElement'] == condition]
+                                        if category_option_combo_id.strip().lower() == 'nan':
+                                            column_name = column_name + " " + category_option_combo_name
+                                            df_x_filtered = df_x[df_x['categoryOptionCombo'] == category_option_combo_id]
 
-                                    if not df_x_filtered.empty:
-                                        is_null = "No"
-                                        value = float(df_x_filtered['value'].iat[0])
-                                        lower_bound = float(data_element["lower_bound"])
-                                        upper_bound = float(data_element["upper_bound"])
-                                        if value < lower_bound:
-                                            is_lower = "Yes"
-                                        if value > upper_bound:
-                                            is_upper = "Yes"
+                                        if not df_x_filtered.empty:
+                                            is_null = "No"
+                                            value = float(df_x_filtered['value'].iat[0])
+                                            lower_bound = float(each_condition["lower_bound"])
+                                            upper_bound = float(each_condition["upper_bound"])
+                                            if value <= lower_bound:
+                                                is_lower = "Yes"
+                                            if value >= upper_bound:
+                                                is_upper = "Yes"
 
-                                    conditions_check.append({
-                                        "Date": report_date.date(),
-                                        "facility": org_unit_name,
-                                        "report name": report_name,
-                                        "frequency": report_frequency,
-                                        "data_element": data_element,
-                                        "column_name": column_name,
-                                        "is_lower": is_lower,
-                                        "is_upper": is_upper,
-                                        "is_null": is_null,
-                                        "Value": value
-                                    })
+                                        conditions_check.append({
+                                            "Date": report_date.date(),
+                                            "facility": org_unit_name,
+                                            "report name": report_name,
+                                            "frequency": report_frequency,
+                                            "data_element": each_condition,
+                                            "column_name": column_name,
+                                            "is_lower": is_lower,
+                                            "is_upper": is_upper,
+                                            "is_null": is_null,
+                                            "Value": value
+                                        })
 
                                 if mode_of_generation != "tracker":
                                     for key, data_element_series in df_x.iterrows():
                                         data_values = data_element_series.to_dict()
                                         value = data_values['value']
-                                        data_element = data_values['dataElement']
+                                        each_condition = data_values['dataElement']
                                         column_name = data_elements_df.loc[data_elements_df["Data Element Id"] ==
-                                                                           data_element]["Data Element"].iat[0]
+                                                                           each_condition]["Data Element"].iat[0]
 
                                         if "categoryOptionCombo" in data_values:
                                             category_option_combo = data_values["categoryOptionCombo"]
