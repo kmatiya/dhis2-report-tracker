@@ -135,11 +135,12 @@ class ReportGenerator:
                                         category_option_combo_id = str(each_condition["category_option_combo_id"])
                                         category_option_combo_name = str(each_condition["category_option_combo_name"])
                                         df_x_filtered = df_x[df_x['dataElement'] == condition]
-                                        if category_option_combo_id.strip().lower() == 'nan':
-                                            column_name = column_name + " " + category_option_combo_name
-                                            df_x_filtered = df_x[df_x['categoryOptionCombo'] == category_option_combo_id]
-
                                         if not df_x_filtered.empty:
+                                            if category_option_combo_id.strip().lower() != 'nan':
+                                                column_name = column_name + " " + category_option_combo_name
+                                                df_x_filtered = df_x[
+                                                    df_x['categoryOptionCombo'] == category_option_combo_id]
+
                                             is_null = "No"
                                             value = float(df_x_filtered['value'].iat[0])
                                             lower_bound = float(each_condition["lower_bound"])
