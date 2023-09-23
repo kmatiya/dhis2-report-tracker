@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from datetime import date
 import os
 import os.path
+from copy import deepcopy
 
 
 class ReportGenerator:
@@ -33,17 +34,12 @@ class ReportGenerator:
         mode_of_generation = self.__config["report_generation"]
         conditions_df = pd.read_csv("conditions.csv")
         conditions_check = []
-        if mode_of_generation == "tracker":
-            report_file = self.__config["tracker_file_name"]
-            file_name = report_file + '.xlsx'
-            writer = pd.ExcelWriter(file_name,
-                                    engine='xlsxwriter',
-                                    engine_kwargs={'options': {'strings_to_numbers': True}})
-            report_dict = []
-
-        else:
-            report_file = self.__config["full_report_file_name"]
-
+        tracker_report_file = self.__config["tracker_file_name"]
+        file_name = tracker_report_file + '.xlsx'
+        tracker_writer = pd.ExcelWriter(file_name,
+                                        engine='xlsxwriter',
+                                        engine_kwargs={'options': {'strings_to_numbers': True}})
+        tracker_report_dict = []
         base_location = self.__config["base_file_path"]
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
@@ -52,16 +48,13 @@ class ReportGenerator:
 
         for each_endpoint in self.__config["endpoints"]:
             report_config_df = pd.read_csv(each_endpoint["report_file_name"])
-            if mode_of_generation != "tracker":
-                report_file = self.__config["full_report_file_name"]
-                file_name = report_file + '.xlsx'
-                writer = pd.ExcelWriter(file_name,
-                                        engine='xlsxwriter',
-                                        engine_kwargs={'options': {'strings_to_numbers': True}})
+            report_file = self.__config["full_report_file_name"]
+            file_name = report_file + '.xlsx'
+            full_report_writer = pd.ExcelWriter(file_name,
+                                                engine='xlsxwriter',
+                                                engine_kwargs={'options': {'strings_to_numbers': True}})
             for idx, x in report_config_df.iterrows():
-                if mode_of_generation != "tracker":
-                    report_dict = []
-
+                full_report_dict = []
                 report_name = str(x['name'])
                 start_date = each_endpoint["default_start_date"]
                 end_date = datetime.today()
@@ -86,7 +79,7 @@ class ReportGenerator:
                         period = self.format_dhis2_date(row, report_frequency)
                         row = str(row)[0:10]
                         report_date = datetime.strptime(row, "%Y-%m-%d")
-
+                        full_report = {}
                         report = {
                             "Date": report_date.date(),
                             "facility": org_unit_name,
@@ -124,10 +117,10 @@ class ReportGenerator:
                                                                            "facility"] == org_unit_name)]
 
                                 if not report_conditions.empty:
-                                    for id, each_condition in report_conditions.iterrows():
-                                        is_lower = "No"
-                                        is_upper = "No"
+                                    for a, each_condition in report_conditions.iterrows():
                                         is_null = "Yes"
+                                        is_lower = ""
+                                        is_upper = ""
                                         value = ''
 
                                         column_name = each_condition["Data Element"]
@@ -145,10 +138,14 @@ class ReportGenerator:
                                             value = float(df_x_filtered['value'].iat[0])
                                             lower_bound = float(each_condition["lower_bound"])
                                             upper_bound = float(each_condition["upper_bound"])
-                                            if value <= lower_bound:
+                                            if value <= lower_bound and is_null == "No":
                                                 is_lower = "Yes"
-                                            if value >= upper_bound:
+                                            else:
+                                                is_lower = "No"
+                                            if value >= upper_bound and is_null == "No":
                                                 is_upper = "Yes"
+                                            else:
+                                                is_upper = "No"
 
                                         conditions_check.append({
                                             "Date": report_date.date(),
@@ -163,34 +160,33 @@ class ReportGenerator:
                                             "Value": value
                                         })
 
-                                if mode_of_generation != "tracker":
-                                    for key, data_element_series in df_x.iterrows():
-                                        data_values = data_element_series.to_dict()
-                                        value = data_values['value']
-                                        each_condition = data_values['dataElement']
-                                        column_name = data_elements_df.loc[data_elements_df["Data Element Id"] ==
-                                                                           each_condition]["Data Element"].iat[0]
+                                full_report = deepcopy(report)
+                                for key, data_element_series in df_x.iterrows():
+                                    data_values = data_element_series.to_dict()
+                                    value = data_values['value']
+                                    each_condition = data_values['dataElement']
+                                    column_name = data_elements_df.loc[data_elements_df["Data Element Id"] ==
+                                                                       each_condition]["Data Element"].iat[0]
 
-                                        if "categoryOptionCombo" in data_values:
-                                            category_option_combo = data_values["categoryOptionCombo"]
-                                            category_option_combo_name = category_option_combinations_df.loc[
-                                                category_option_combinations_df["id"] == category_option_combo][
-                                                "name"].iat[0]
-                                            report[str(column_name) + " " + str(category_option_combo_name)] = value
-                                        else:
-                                            report[column_name] = value
+                                    if "categoryOptionCombo" in data_values:
+                                        category_option_combo = data_values["categoryOptionCombo"]
+                                        category_option_combo_name = category_option_combinations_df.loc[
+                                            category_option_combinations_df["id"] == category_option_combo][
+                                            "name"].iat[0]
+                                        full_report[str(column_name) + " " + str(category_option_combo_name)] = value
+                                    else:
+                                        full_report[column_name] = value
+                                tracker_report_dict.append(report)
+                                full_report_dict.append(full_report)
 
-                        report_dict.append(report)
-                    if mode_of_generation != "tracker":
-                        final_df = pd.DataFrame.from_records(report_dict)
-                        final_df.to_excel(writer, index=False, sheet_name=report_name)
-            if mode_of_generation == "full":
-                writer.close()
-            if mode_of_generation == "tracker":
-                final_df = pd.DataFrame.from_records(report_dict)
-                final_df.to_excel(writer, index=False, sheet_name=report_file)
+                    final_df = pd.DataFrame.from_records(full_report_dict)
+                    final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
+            full_report_writer.close()
+            final_df = pd.DataFrame.from_records(tracker_report_dict)
+            final_df.to_excel(tracker_writer, index=False, sheet_name=report_file)
+            tracker_writer.close()
             # New code to export conditions_check as Excel file
             conditions_check_df = pd.DataFrame(conditions_check)
             conditions_check_df.to_excel("conditions_check.xlsx", index=False)
-            writer.close()
+
             print("Ending time" + str(datetime.now()))
