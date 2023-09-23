@@ -31,6 +31,8 @@ class ReportGenerator:
 
     def get_data_frame(self):
         mode_of_generation = self.__config["report_generation"]
+        conditions_df = pd.read_csv("conditions.csv")
+        conditions_check = []
         if mode_of_generation == "tracker":
             report_file = self.__config["tracker_file_name"]
             file_name = report_file + '.xlsx'
@@ -65,6 +67,7 @@ class ReportGenerator:
                 end_date = datetime.today()
                 report_due_day = x["report_due_day"]
                 report_frequency = str(x['frequency'])
+                data_set = str(x["data_set"])
                 periods = self.get_dhis2_period(start_date, end_date, report_frequency)
                 report_name = report_name[0:30].strip()
                 org_units_name = x["org_units"].split(",")
@@ -116,6 +119,45 @@ class ReportGenerator:
                                 report["date entered in system"] = date_created.date()
                                 report["days difference from due date"] = days_diff
 
+                                report_conditions = conditions_df.loc[(conditions_df["data_set"] == data_set) &
+                                                                      (conditions_df[
+                                                                           "facility"] == org_unit_name)]
+                                # add if statement when report_conditions is empty
+                                for id, data_element in report_conditions.iterrows():
+                                    is_lower = "No"
+                                    is_upper = "No"
+                                    is_null = "Yes"
+                                    value = ''
+
+                                    column_name = data_element["Data Element"]
+                                    condition = data_element["Data Element Id"]
+
+                                    # Check if the current data element exists in the dataValues
+                                    df_x_filtered = df_x[df_x['dataElement'] == condition]
+
+                                    if not df_x_filtered.empty:
+                                        is_null = "No"
+                                        value = float(df_x_filtered['value'].iat[0])
+                                        lower_bound = float(data_element["lower_bound"])
+                                        upper_bound = float(data_element["upper_bound"])
+                                        if value < lower_bound:
+                                            is_lower = "Yes"
+                                        if value > upper_bound:
+                                            is_upper = "Yes"
+
+                                    conditions_check.append({
+                                        "Date": report_date.date(),
+                                        "facility": org_unit_name,
+                                        "report name": report_name,
+                                        "frequency": report_frequency,
+                                        "data_element": data_element,
+                                        "column_name": column_name,
+                                        "is_lower": is_lower,
+                                        "is_upper": is_upper,
+                                        "is_null": is_null,
+                                        "Value": value
+                                    })
+
                                 if mode_of_generation != "tracker":
                                     for key, data_element_series in df_x.iterrows():
                                         data_values = data_element_series.to_dict()
@@ -123,6 +165,7 @@ class ReportGenerator:
                                         data_element = data_values['dataElement']
                                         column_name = data_elements_df.loc[data_elements_df["Data Element Id"] ==
                                                                            data_element]["Data Element"].iat[0]
+
                                         if "categoryOptionCombo" in data_values:
                                             category_option_combo = data_values["categoryOptionCombo"]
                                             category_option_combo_name = category_option_combinations_df.loc[
@@ -136,10 +179,13 @@ class ReportGenerator:
                     if mode_of_generation != "tracker":
                         final_df = pd.DataFrame.from_records(report_dict)
                         final_df.to_excel(writer, index=False, sheet_name=report_name)
-            if mode_of_generation != "tracker":
+            if mode_of_generation == "full":
                 writer.close()
             if mode_of_generation == "tracker":
                 final_df = pd.DataFrame.from_records(report_dict)
                 final_df.to_excel(writer, index=False, sheet_name=report_file)
-                writer.close()
+            # New code to export conditions_check as Excel file
+            conditions_check_df = pd.DataFrame(conditions_check)
+            conditions_check_df.to_excel("conditions_check.xlsx", index=False)
+            writer.close()
             print("Ending time" + str(datetime.now()))

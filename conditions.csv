@@ -1,0 +1,4 @@
+facility,Report Name,data_set,Data Element,Data Element Id,Data Element Short Name,lower_bound,upper_bound
+Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn34,RHD ANC Week of first ANC Visit Week 0-12,7,10
+Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC Visits per Woman Total with 1 Visit,SVC5nKhvcQr,RHD ANC Visits per Woman Total with 1 Visit,0,10
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,HMIS # of OPD Attendance,100,5000
