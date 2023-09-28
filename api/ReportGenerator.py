@@ -32,6 +32,8 @@ class ReportGenerator:
 
     def get_data_frame(self):
         mode_of_generation = self.__config["report_generation"]
+        date_format = "%Y-%m-%d"
+        date_and_time_format = "%Y-%m-%d %H:%M:%S"
         conditions_df = pd.read_csv("conditions.csv")
         conditions_check = []
         tracker_report_file = self.__config["tracker_file_name"]
@@ -58,6 +60,7 @@ class ReportGenerator:
                 report_name = str(x['name'])
                 start_date = each_endpoint["default_start_date"]
                 end_date = datetime.today()
+                end_date_str = datetime.strftime(datetime.now(), date_and_time_format)
                 report_due_day = x["report_due_day"]
                 report_frequency = str(x['frequency'])
                 data_set = str(x["data_set"])
@@ -78,39 +81,40 @@ class ReportGenerator:
                         split_date = str(row).split("-")
                         period = self.format_dhis2_date(row, report_frequency)
                         row = str(row)[0:10]
-                        report_date = datetime.strptime(row, "%Y-%m-%d")
+                        report_date = datetime.strptime(row, date_format)
                         full_report = {}
                         report = {
-                            "Date": report_date.date(),
+                            "date": report_date.date(),
                             "facility": org_unit_name,
-                            "report name": report_name,
+                            "report_name": report_name,
+                            "date_created_in_db": end_date_str,
                             "frequency": report_frequency}
                         if report_df.empty:
-                            report["report in the system"] = "No"
-                            report["entered on time"] = "No"
+                            report["report_in_the_system"] = "No"
+                            report["entered_on_time"] = "No"
                         else:
                             test_period = report_df["period"].iat[0]
                             df_x = report_df.loc[
                                 (report_df["period"] == period) & (report_df["orgUnit"] == str(org_unit_id))]
                             if df_x.empty:
-                                report["report in the system"] = "No"
-                                report["entered on time"] = "No"
+                                report["report_in_the_system"] = "No"
+                                report["entered_on_time"] = "No"
                             else:
-                                report["report in the system"] = "Yes"
+                                report["report_in_the_system"] = "Yes"
                                 date_created_str = df_x["created"].iat[0]
                                 date_created_str = date_created_str[0:10]
-                                date_format = "%Y-%m-%d"
+
 
                                 # Convert string to datetime using strptime
                                 expected_entry_date = report_date + timedelta(days=report_due_day)
                                 date_created = datetime.strptime(date_created_str, date_format)
                                 days_diff = (date_created - expected_entry_date).days
                                 if days_diff <= 0:
-                                    report["entered on time"] = "Yes"
+                                    report["entered_on_time"] = "Yes"
                                 else:
-                                    report["entered on time"] = "No"
-                                report["date entered in system"] = date_created.date()
-                                report["days difference from due date"] = days_diff
+                                    report["entered_on_time"] = "No"
+                                report["date_entered_in_system"] = date_created.date()
+                                report["days_difference_from_due_date"] = days_diff
 
                                 report_conditions = conditions_df.loc[(conditions_df["data_set"] == data_set) &
                                                                       (conditions_df[
@@ -148,16 +152,16 @@ class ReportGenerator:
                                                 is_upper = "No"
 
                                         conditions_check.append({
-                                            "Date": report_date.date(),
+                                            "date": report_date.date(),
                                             "facility": org_unit_name,
-                                            "report name": report_name,
+                                            "report_name": report_name,
                                             "frequency": report_frequency,
-                                            "data_element": each_condition,
-                                            "column_name": column_name,
+                                            "data_element": column_name,
                                             "is_lower": is_lower,
                                             "is_upper": is_upper,
                                             "is_null": is_null,
-                                            "Value": value
+                                            "value": value,
+                                            "date_created_in_db": end_date_str
                                         })
 
                                 full_report = deepcopy(report)
@@ -179,14 +183,15 @@ class ReportGenerator:
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
 
-                    final_df = pd.DataFrame.from_records(full_report_dict)
-                    final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
+                    full_report_final_df = pd.DataFrame.from_records(full_report_dict)
+                    full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
-            final_df = pd.DataFrame.from_records(tracker_report_dict)
-            final_df.to_excel(tracker_writer, index=False, sheet_name=report_file)
+            tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)
+            tracker_final_df.to_excel(tracker_writer, index=False, sheet_name=report_file)
             tracker_writer.close()
             # New code to export conditions_check as Excel file
             conditions_check_df = pd.DataFrame(conditions_check)
             conditions_check_df.to_excel("conditions_check.xlsx", index=False)
 
             print("Ending time" + str(datetime.now()))
+            return tracker_final_df, conditions_check_df
