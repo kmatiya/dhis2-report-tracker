@@ -2,3 +2,7 @@ pandas==2.0.1
 Requests==2.29.0
 openpyxl
 xlsxwriter==3.1.0
+psycopg2-binary
+pyodbc
+SQLAlchemy
+schedule==1.2.0
