@@ -15,13 +15,13 @@ config = {
             "report_file_name": "reports.csv",
             "use_start_date_in_request": True,
             "use_end_date_in_request": True,
-            "default_start_date": "2023-01-01",
-            "default_end_date": "2023-12-31",
-            "db_host": "",
-            "db_name": "",
-            "db_user": "",
-            "db_password": "",
-            "db_port": ""
+            "default_start_date": "2018-01-01",
+            "default_end_date": "2024-12-31",
+            "db_host": "dhis2_postgres_container",
+            "db_name": "dhis2",
+            "db_user": "postgres",
+            "db_password": "9%4qP7b2H!%J",
+            "db_port": "5432"
         },
     ],
 }

@@ -1,3 +1,3 @@
-resource,data_set,name,org_units,frequency
-/dataValueSets,XttTY8YbYKB,APZU IC3 Clerks Monthly Reporting Form,Neno District Hospital,Monthly
-/dataValueSets,bg0W97d3Rqb,APZU SGBV Quarterly Reporting Form,Neno District Hospital,Quarterly
+resource,data_set,name,org_units,frequency,report_due_day
+/dataValueSets,GzO4xPVk8pl,ANC Monthly Facility Report,Chifunga Health Centre,Monthly,15
+/dataValueSets,q1Es3k3sZem,HMIS 15,Chifunga Health Centre,Monthly,15
