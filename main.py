@@ -35,7 +35,8 @@ def generate_reports():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print("starting scheduled tasks")
+    generate_reports()
+    '''print("starting scheduled tasks")
     schedule.every(4).hours.do(generate_reports)
     # Loop so that the scheduling task
     # keeps on running all time.
@@ -43,6 +44,6 @@ if __name__ == '__main__':
         # Checks whether a scheduled task
         # is pending to run or not
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(1)'''
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
