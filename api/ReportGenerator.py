@@ -45,7 +45,7 @@ class ReportGenerator:
         base_location = self.__config["base_file_path"]
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
-        category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"],encoding='latin1')
+        category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"])
         print("Create files for each report")
 
         for each_endpoint in self.__config["endpoints"]:
