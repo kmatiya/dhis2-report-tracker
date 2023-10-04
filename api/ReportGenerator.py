@@ -92,6 +92,8 @@ class ReportGenerator:
                         if report_df.empty:
                             report["report_in_the_system"] = "No"
                             report["entered_on_time"] = "No"
+                            tracker_report_dict.append(report)
+                            full_report_dict.append(full_report)
                         else:
                             test_period = report_df["period"].iat[0]
                             df_x = report_df.loc[
@@ -187,7 +189,7 @@ class ReportGenerator:
                     full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
             tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)
-            tracker_final_df.to_excel(tracker_writer, index=False, sheet_name=report_file)
+            tracker_final_df.to_excel(tracker_writer, index=False, sheet_name=tracker_report_file)
             tracker_writer.close()
             # New code to export conditions_check as Excel file
             conditions_check_df = pd.DataFrame(conditions_check)
