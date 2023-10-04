@@ -11,7 +11,6 @@ import schedule
 
 
 def generate_reports():
-
     print("Starting time" + str(datetime.now()))
     http_report_service = HttpReportService(config)
     print("Pulling reports from server has started")
@@ -41,7 +40,7 @@ def generate_reports():
 if __name__ == '__main__':
     generate_reports()
     print("starting scheduled tasks")
-    schedule.every(4).hours.do(generate_reports)
+    schedule.every(6).hours.do(generate_reports)
     # Loop so that the scheduling task
     # keeps on running all time.
     while True:

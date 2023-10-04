@@ -67,13 +67,11 @@ class ReportGenerator:
                 periods = self.get_dhis2_period(start_date, end_date, report_frequency)
                 report_name = report_name[0:30].strip()
                 org_units_name = x["org_units"].split(",")
-                print(report_name)
                 complete_report_path = os.path.join(base_location, report_name)
                 reports_by_name = self.__reports[int(idx)]
                 for index, each_report_index in enumerate(reports_by_name):
                     report_to_print = each_report_index['dataValues']
                     report_df = pd.DataFrame.from_dict(report_to_print)
-                    print(report_df.head())
                     org_unit_name = org_units_name[index]
                     org_unit_id = org_units_df.loc[org_units_df["Org Unit"] == org_unit_name]["Org Unit Id"].iat[0]
 
@@ -83,6 +81,7 @@ class ReportGenerator:
                         row = str(row)[0:10]
                         report_date = datetime.strptime(row, date_format)
                         full_report = {}
+                        print(f"Processing {report_name} at {org_units_name} for date: {report_date.date()}")
                         report = {
                             "date": report_date.date(),
                             "facility": org_unit_name,
