@@ -100,6 +100,8 @@ class ReportGenerator:
                             if df_x.empty:
                                 report["report_in_the_system"] = "No"
                                 report["entered_on_time"] = "No"
+                                tracker_report_dict.append(report)
+                                full_report_dict.append(full_report)
                             else:
                                 report["report_in_the_system"] = "Yes"
                                 date_created_str = df_x["created"].iat[0]
