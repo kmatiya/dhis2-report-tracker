@@ -81,7 +81,7 @@ class ReportGenerator:
                         row = str(row)[0:10]
                         report_date = datetime.strptime(row, date_format)
                         full_report = {}
-                        print(f"Processing {report_name} at {org_units_name} for date: {report_date.date()}")
+                        print(f"Processing {report_name} at {org_unit_name} for date: {report_date.date()}")
                         report = {
                             "date": report_date.date(),
                             "facility": org_unit_name,
@@ -172,8 +172,8 @@ class ReportGenerator:
                                     data_values = data_element_series.to_dict()
                                     value = data_values['value']
                                     each_condition = data_values['dataElement']
-                                    column_name = data_elements_df.loc[data_elements_df["Data Element Id"] ==
-                                                                       each_condition]["Data Element"].iat[0]
+                                    column_name = data_elements_df.loc[data_elements_df["id"] ==
+                                                                       each_condition]["name"].iat[0]
 
                                     if "categoryOptionCombo" in data_values:
                                         category_option_combo = data_values["categoryOptionCombo"]
@@ -197,4 +197,4 @@ class ReportGenerator:
             conditions_check_df.to_excel("conditions_check.xlsx", index=False)
 
             print("Ending time" + str(datetime.now()))
-            return tracker_final_df, conditions_check_df
+            return tracker_final_df, conditions_check_df, data_elements_df
