@@ -197,4 +197,4 @@ class ReportGenerator:
             conditions_check_df.to_excel("conditions_check.xlsx", index=False)
 
             print("Ending time" + str(datetime.now()))
-            return tracker_final_df, conditions_check_df, data_elements_df
+            return tracker_final_df, conditions_check_df, data_elements_df, category_option_combinations_df
