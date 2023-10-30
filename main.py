@@ -19,19 +19,14 @@ def generate_reports():
     status_code, reports = http_report_service.get_reports()
     if status_code == 200:
         try:
-            report_generator = ReportGenerator(reports, config)
-            tracker_final_df, conditions_check_df, data_elements_df, category_option_combinations_df = \
-                report_generator.get_data_frame()
-            print("Complete generating reports")
             for each_config in config["endpoints"]:
                 db_service = DbService(database=each_config["db_name"], user=each_config["db_user"],
                                        password=each_config['db_password'],
                                        host=each_config['db_host'],
                                        port=each_config["db_port"])
-                db_service.write_to_db("dhis2_report_summary", tracker_final_df)
-                db_service.write_to_db("data_element_validation", conditions_check_df)
-                db_service.write_to_db("data_elements", data_elements_df)
-                db_service.write_to_db("category_option_combinations", category_option_combinations_df)
+                report_generator = ReportGenerator(reports, config)
+                report_generator.get_data_frame(db_service=db_service)
+                print("Complete generating reports")
             print("Ending saving in database at " + str(datetime.now()))
         except Exception as e:
             print(f"Error saving/accessing to db{e}")

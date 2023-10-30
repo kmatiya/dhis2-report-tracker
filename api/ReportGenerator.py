@@ -4,6 +4,7 @@ from datetime import date
 import os
 import os.path
 from copy import deepcopy
+from api.DbService import DbService
 
 
 class ReportGenerator:
@@ -30,7 +31,7 @@ class ReportGenerator:
             period = split_date[0] + "Q" + str(timestamp.quarter)
         return period
 
-    def get_data_frame(self):
+    def get_data_frame(self, db_service: DbService):
         mode_of_generation = self.__config["report_generation"]
         date_format = "%Y-%m-%d"
         date_and_time_format = "%Y-%m-%d %H:%M:%S"
@@ -45,7 +46,7 @@ class ReportGenerator:
         base_location = self.__config["base_file_path"]
         data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
-        category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"],encoding='latin1')
+        category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"], encoding='latin1')
         print("Create files for each report")
 
         for each_endpoint in self.__config["endpoints"]:
@@ -55,6 +56,7 @@ class ReportGenerator:
             full_report_writer = pd.ExcelWriter(file_name,
                                                 engine='xlsxwriter',
                                                 engine_kwargs={'options': {'strings_to_numbers': True}})
+
             for idx, x in report_config_df.iterrows():
                 full_report_dict = []
                 report_name = str(x['name'])
@@ -106,7 +108,6 @@ class ReportGenerator:
                                 report["report_in_the_system"] = "Yes"
                                 date_created_str = df_x["created"].iat[0]
                                 date_created_str = date_created_str[0:10]
-
 
                                 # Convert string to datetime using strptime
                                 expected_entry_date = report_date + timedelta(days=report_due_day)
@@ -171,22 +172,24 @@ class ReportGenerator:
                                 for key, data_element_series in df_x.iterrows():
                                     data_values = data_element_series.to_dict()
                                     value = data_values['value']
-                                    each_condition = data_values['dataElement']
-                                    column_name = data_elements_df.loc[data_elements_df["id"] ==
-                                                                       each_condition]["name"].iat[0]
+                                    data_element = data_values["dataElement"]
+                                    # column_name = data_elements_df.loc[data_elements_df["id"] ==
+                                    #                                   data_element]["name"].iat[0]
+                                    column_name = data_element
 
                                     if "categoryOptionCombo" in data_values:
                                         category_option_combo = data_values["categoryOptionCombo"]
-                                        category_option_combo_name = category_option_combinations_df.loc[
-                                            category_option_combinations_df["id"] == category_option_combo][
-                                            "name"].iat[0]
-                                        full_report[str(column_name) + " " + str(category_option_combo_name)] = value
+                                        # category_option_combo_name = category_option_combinations_df.loc[
+                                        #    category_option_combinations_df["id"] == category_option_combo][
+                                        #    "name"].iat[0]
+                                        full_report[str(column_name) + "_" + str(category_option_combo)] = value
                                     else:
                                         full_report[column_name] = value
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
 
                     full_report_final_df = pd.DataFrame.from_records(full_report_dict)
+                    db_service.write_to_db(report_name.lower().replace(" ", "_"), full_report_final_df)
                     full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
             tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)
@@ -195,6 +198,8 @@ class ReportGenerator:
             # New code to export conditions_check as Excel file
             conditions_check_df = pd.DataFrame(conditions_check)
             conditions_check_df.to_excel("conditions_check.xlsx", index=False)
-
+            db_service.write_to_db("dhis2_report_summary", tracker_final_df)
+            db_service.write_to_db("data_element_validation", conditions_check_df)
+            db_service.write_to_db("data_elements", data_elements_df)
+            db_service.write_to_db("category_option_combinations", category_option_combinations_df)
             print("Ending time" + str(datetime.now()))
-            return tracker_final_df, conditions_check_df, data_elements_df, category_option_combinations_df
