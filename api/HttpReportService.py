@@ -80,7 +80,7 @@ class HttpReportService:
                                                              password=each_endpoint["password"]))
                 self.__status_code = get_report.status_code = get_report.status_code
                 if self.__status_code == 200:
-                    print("Successful Request for data elements")
+                    print(f"Successful Request for {resource}")
                     response = json.loads(get_report.text)
                     return self.__status_code, response
                 else:

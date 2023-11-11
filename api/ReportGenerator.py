@@ -31,8 +31,7 @@ class ReportGenerator:
             period = split_date[0] + "Q" + str(timestamp.quarter)
         return period
 
-    def get_data_frame(self,data_elements, db_service: DbService):
-        mode_of_generation = self.__config["report_generation"]
+    def get_data_frame(self,data_elements, category_option_combos, db_service: DbService):
         date_format = "%Y-%m-%d"
         date_and_time_format = "%Y-%m-%d %H:%M:%S"
         conditions_df = pd.read_csv("conditions.csv")
@@ -47,7 +46,8 @@ class ReportGenerator:
         data_elements_df = pd.DataFrame.from_dict(data_elements)
         data_elements_df.rename(columns={'displayName': 'name'}, inplace=True)
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
-        category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"], encoding='latin1')
+        category_option_combinations_df = pd.DataFrame.from_dict(category_option_combos)
+        category_option_combinations_df.rename(columns={'displayName': 'name'}, inplace=True)
         print("Create files for each report")
 
         for each_endpoint in self.__config["endpoints"]:
