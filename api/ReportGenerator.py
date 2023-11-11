@@ -31,7 +31,7 @@ class ReportGenerator:
             period = split_date[0] + "Q" + str(timestamp.quarter)
         return period
 
-    def get_data_frame(self, db_service: DbService):
+    def get_data_frame(self,data_elements, db_service: DbService):
         mode_of_generation = self.__config["report_generation"]
         date_format = "%Y-%m-%d"
         date_and_time_format = "%Y-%m-%d %H:%M:%S"
@@ -44,7 +44,8 @@ class ReportGenerator:
                                         engine_kwargs={'options': {'strings_to_numbers': True}})
         tracker_report_dict = []
         base_location = self.__config["base_file_path"]
-        data_elements_df = pd.read_csv(self.__config["data_elements_file_name"])
+        data_elements_df = pd.DataFrame.from_dict(data_elements)
+        data_elements_df.rename(columns={'displayName': 'name'}, inplace=True)
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         category_option_combinations_df = pd.read_csv(self.__config["category_option_combinations"], encoding='latin1')
         print("Create files for each report")
@@ -60,6 +61,7 @@ class ReportGenerator:
             for idx, x in report_config_df.iterrows():
                 full_report_dict = []
                 report_name = str(x['name'])
+                report_short_name = str(x['short_name'])
                 start_date = each_endpoint["default_start_date"]
                 end_date = datetime.today()
                 end_date_str = datetime.strftime(datetime.now(), date_and_time_format)
@@ -189,7 +191,7 @@ class ReportGenerator:
                                 full_report_dict.append(full_report)
 
                     full_report_final_df = pd.DataFrame.from_records(full_report_dict)
-                    db_service.write_to_db(report_name.lower().replace(" ", "_"), full_report_final_df)
+                    db_service.write_to_db(report_short_name, full_report_final_df)
                     full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
             tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)

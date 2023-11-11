@@ -13,6 +13,7 @@ import schedule
 def generate_reports():
     print("Starting time" + str(datetime.now()))
     http_report_service = HttpReportService(config)
+    status_code, get_data_elements = http_report_service.get_data("dataElements", 200000)
     print("Pulling reports from server has started")
     http_report_service.get_reports_from_server()
     print("Complete pulling reports from DHIS2 api")
@@ -25,7 +26,7 @@ def generate_reports():
                                        host=each_config['db_host'],
                                        port=each_config["db_port"])
                 report_generator = ReportGenerator(reports, config)
-                report_generator.get_data_frame(db_service=db_service)
+                report_generator.get_data_frame(get_data_elements["dataElements"], db_service=db_service)
                 print("Complete generating reports")
             print("Ending saving in database at " + str(datetime.now()))
         except Exception as e:
