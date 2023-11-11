@@ -1,3 +1,4 @@
+import time
 from app import app
 
 from flask import Flask, abort
@@ -19,9 +20,7 @@ db_service = DbService(database=db_config["db_name"], user=db_config["db_user"],
                        host=db_config["db_host"],
                        port=db_config["db_port"])
 
-data_elements_df = db_service.get_from_db("data_elements")
-category_option_combinations_df = db_service.get_from_db("category_option_combinations")
-
+time.sleep(config["time_delay"])
 
 @auth.verify_password
 def verify_password(username, password):
@@ -34,6 +33,8 @@ def verify_password(username, password):
 @auth.login_required
 def index(table_name):
     try:
+        data_elements_df = db_service.get_from_db("data_elements")
+        category_option_combinations_df = db_service.get_from_db("category_option_combinations")
         table_df = db_service.get_from_db(table_name)
         table_df = table_df.replace([None], "")
         report_element_columns = table_df.columns.tolist()[9:]
