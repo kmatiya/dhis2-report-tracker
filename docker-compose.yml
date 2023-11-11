@@ -40,3 +40,23 @@ services:
     build: .
     depends_on:
       - dhis2_db
+
+  flask:
+    build: ./dhis2_web_service/flask
+    container_name: flask
+    restart: always
+    depends_on:
+      - dhis2_db
+    environment:
+      - APP_NAME=MyFlaskApp
+    expose:
+      - 8081
+  
+  nginx:
+    build: ./dhis2_web_service/nginx
+    container_name: nginx
+    restart: always
+    depends_on:
+      - dhis2_db
+    ports:
+      - "8090:8083"
