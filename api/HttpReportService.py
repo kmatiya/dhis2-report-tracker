@@ -66,3 +66,26 @@ class HttpReportService:
 
     def get_reports(self):
         return self.__status_code, self.__reports
+
+    def get_data(self, resource, page_size):
+        response = []
+        try:
+            for each_endpoint in self.__config["endpoints"]:
+                url = each_endpoint["base"] + "/" + resource
+                params = {
+                    "pageSize": page_size,
+                }
+                get_report = requests.get(url, params=params,
+                                          auth=HTTPBasicAuth(username=each_endpoint["username"],
+                                                             password=each_endpoint["password"]))
+                self.__status_code = get_report.status_code = get_report.status_code
+                if self.__status_code == 200:
+                    print("Successful Request for data elements")
+                    response = json.loads(get_report.text)
+                    return self.__status_code, response
+                else:
+                    return self.__status_code, response
+        except Exception as e:
+            self.__status_code = 500
+            response.append(e)
+            return self.__status_code, response
