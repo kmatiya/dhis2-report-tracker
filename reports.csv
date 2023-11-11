@@ -1,3 +1,2 @@
-resource,data_set,name,org_units,frequency,report_due_day
-/dataValueSets,GzO4xPVk8pl,ANC Monthly Facility Report,Chifunga Health Centre,Monthly,15
-/dataValueSets,q1Es3k3sZem,HMIS 15,Chifunga Health Centre,Monthly,15
+resource,data_set,name,org_units,frequency,report_due_day,short_name
+/dataValueSets,GzO4xPVk8pl,ANC Monthly Facility Report,Chifunga Health Centre,Monthly,15,anc_monthly
