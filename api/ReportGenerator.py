@@ -122,53 +122,54 @@ class ReportGenerator:
                                 report["date_entered_in_system"] = date_created.date()
                                 report["days_difference_from_due_date"] = days_diff
 
-                                report_conditions = conditions_df.loc[(conditions_df["data_set"] == data_set) &
-                                                                      (conditions_df[
-                                                                           "facility"] == org_unit_name)]
+                                if each_endpoint["validate_elements"] is True:
+                                    report_conditions = conditions_df.loc[(conditions_df["data_set"] == data_set) &
+                                                                          (conditions_df[
+                                                                               "facility"] == org_unit_name)]
 
-                                if not report_conditions.empty:
-                                    for a, each_condition in report_conditions.iterrows():
-                                        is_null = "Yes"
-                                        is_lower = ""
-                                        is_upper = ""
-                                        value = ''
+                                    if not report_conditions.empty:
+                                        for a, each_condition in report_conditions.iterrows():
+                                            is_null = "Yes"
+                                            is_lower = ""
+                                            is_upper = ""
+                                            value = ''
 
-                                        column_name = each_condition["Data Element"]
-                                        condition = each_condition["Data Element Id"]
-                                        category_option_combo_id = str(each_condition["category_option_combo_id"])
-                                        category_option_combo_name = str(each_condition["category_option_combo_name"])
-                                        df_x_filtered = df_x[df_x['dataElement'] == condition]
-                                        if not df_x_filtered.empty:
-                                            if category_option_combo_id.strip().lower() != 'nan':
-                                                column_name = column_name + " " + category_option_combo_name
-                                                df_x_filtered = df_x[
-                                                    df_x['categoryOptionCombo'] == category_option_combo_id]
+                                            column_name = each_condition["Data Element"]
+                                            condition = each_condition["Data Element Id"]
+                                            category_option_combo_id = str(each_condition["category_option_combo_id"])
+                                            category_option_combo_name = str(each_condition["category_option_combo_name"])
+                                            df_x_filtered = df_x[df_x['dataElement'] == condition]
+                                            if not df_x_filtered.empty:
+                                                if category_option_combo_id.strip().lower() != 'nan':
+                                                    column_name = column_name + " " + category_option_combo_name
+                                                    df_x_filtered = df_x[
+                                                        df_x['categoryOptionCombo'] == category_option_combo_id]
 
-                                            is_null = "No"
-                                            value = float(df_x_filtered['value'].iat[0])
-                                            lower_bound = float(each_condition["lower_bound"])
-                                            upper_bound = float(each_condition["upper_bound"])
-                                            if value <= lower_bound and is_null == "No":
-                                                is_lower = "Yes"
-                                            else:
-                                                is_lower = "No"
-                                            if value >= upper_bound and is_null == "No":
-                                                is_upper = "Yes"
-                                            else:
-                                                is_upper = "No"
+                                                is_null = "No"
+                                                value = float(df_x_filtered['value'].iat[0])
+                                                lower_bound = float(each_condition["lower_bound"])
+                                                upper_bound = float(each_condition["upper_bound"])
+                                                if value <= lower_bound and is_null == "No":
+                                                    is_lower = "Yes"
+                                                else:
+                                                    is_lower = "No"
+                                                if value >= upper_bound and is_null == "No":
+                                                    is_upper = "Yes"
+                                                else:
+                                                    is_upper = "No"
 
-                                        conditions_check.append({
-                                            "date": report_date.date(),
-                                            "facility": org_unit_name,
-                                            "report_name": report_name,
-                                            "frequency": report_frequency,
-                                            "data_element": column_name,
-                                            "is_lower": is_lower,
-                                            "is_upper": is_upper,
-                                            "is_null": is_null,
-                                            "value": value,
-                                            "date_created_in_db": end_date_str
-                                        })
+                                            conditions_check.append({
+                                                "date": report_date.date(),
+                                                "facility": org_unit_name,
+                                                "report_name": report_name,
+                                                "frequency": report_frequency,
+                                                "data_element": column_name,
+                                                "is_lower": is_lower,
+                                                "is_upper": is_upper,
+                                                "is_null": is_null,
+                                                "value": value,
+                                                "date_created_in_db": end_date_str
+                                            })
 
                                 full_report = deepcopy(report)
                                 for key, data_element_series in df_x.iterrows():
@@ -199,7 +200,8 @@ class ReportGenerator:
             tracker_writer.close()
             # New code to export conditions_check as Excel file
             conditions_check_df = pd.DataFrame(conditions_check)
-            conditions_check_df.to_excel("conditions_check.xlsx", index=False)
+            if each_endpoint["validate_elements"] is True:
+                conditions_check_df.to_excel("conditions_check.xlsx", index=False)
             db_service.write_to_db("dhis2_report_summary", tracker_final_df)
             db_service.write_to_db("data_element_validation", conditions_check_df)
             db_service.write_to_db("data_elements", data_elements_df)
