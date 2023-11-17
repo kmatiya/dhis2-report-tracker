@@ -13,6 +13,7 @@ config = {
             "username": "",
             "password": "",
             "report_file_name": "reports.csv",
+            "validate_elements": True,
             "use_start_date_in_request": True,
             "use_end_date_in_request": True,
             "default_start_date": "2018-01-01",
