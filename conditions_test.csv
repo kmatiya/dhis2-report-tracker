@@ -1,0 +1,2 @@
+facility,report_name,data_set,data_element,data_element_id,category_option_combo_id,category_option_combo_name,lower_bound,upper_bound,validate_lower_bound,validate_upper_bound,comment
+Neno District Hospital,ANC Monthly Facility Report,GzO4xPVk19pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn45,,,0,728,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12

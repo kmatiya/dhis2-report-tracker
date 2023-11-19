@@ -1,4 +1,586 @@
-facility,Report Name,data_set,Data Element,Data Element Id,Data Element Short Name,category_option_combo_id,category_option_combo_name,lower_bound,upper_bound
-Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn34,RHD ANC Week of first ANC Visit Week 0-12,,,7,10
-Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC Visits per Woman Total with 1 Visit,SVC5nKhvcQr,RHD ANC Visits per Woman Total with 1 Visit,,,0,10
-Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,HMIS # of OPD Attendance,,,100,5000
+facility,report_name,data_set,data_element,data_element_id,category_option_combo_id,category_option_combo_name,lower_bound,upper_bound,validate_lower_bound,validate_upper_bound,comment
+Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn34,,,0,475,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Dambe Health Centre,ANC Monthly Facility Report,GzO4xPVk9pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn35,,,0,579,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Ligowe Health Centre,ANC Monthly Facility Report,GzO4xPVk10pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn36,,,0,461,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Lisungwi Community Hospital,ANC Monthly Facility Report,GzO4xPVk11pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn37,,,0,368,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Luwani Health Centre,ANC Monthly Facility Report,GzO4xPVk12pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn38,,,0,232,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Magaleta Health Centre,ANC Monthly Facility Report,GzO4xPVk13pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn39,,,0,382,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Matandani Health Centre,ANC Monthly Facility Report,GzO4xPVk15pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn41,,,0,420,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Matope Health Centre,ANC Monthly Facility Report,GzO4xPVk16pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn42,,,0,671,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Midzemba Health Center,ANC Monthly Facility Report,GzO4xPVk17pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn43,,,0,2195,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Neno District Hospital,ANC Monthly Facility Report,GzO4xPVk19pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn45,,,0,728,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Neno Parish Health Centre,ANC Monthly Facility Report,GzO4xPVk20pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn46,,,0,304,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Nkula Health Centre,ANC Monthly Facility Report,GzO4xPVk21pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn47,,,0,137,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Nsambe Health Centre,ANC Monthly Facility Report,GzO4xPVk22pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn48,,,0,588,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Tedzani Dispensary,ANC Monthly Facility Report,GzO4xPVk23pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn49,,,0,70,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Zalewa Health Centre,ANC Monthly Facility Report,GzO4xPVk24pl,RHD ANC Week of first ANC Visit Week 0-12,EVt2iC6Tn50,,,0,467,Yes,Yes,70% of RHD ANC Week Of Firsr ANC Visit Week 0-12
+Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC New Women Registered,zAvhV81SCLV,,,0,678,Yes,Yes,CMED projection of ANC Women Registered
+Dambe Health Centre,ANC Monthly Facility Report,GzO4xPVk9pl,RHD ANC New Women Registered,zAvhV82SCLV,,,0,827,Yes,Yes,CMED projection of ANC Women Registered
+Ligowe Health Centre,ANC Monthly Facility Report,GzO4xPVk10pl,RHD ANC New Women Registered,zAvhV83SCLV,,,0,658,Yes,Yes,CMED projection of ANC Women Registered
+Lisungwi Community Hospital,ANC Monthly Facility Report,GzO4xPVk11pl,RHD ANC New Women Registered,zAvhV84SCLV,,,0,525,Yes,Yes,CMED projection of ANC Women Registered
+Luwani Health Centre,ANC Monthly Facility Report,GzO4xPVk12pl,RHD ANC New Women Registered,zAvhV85SCLV,,,0,331,Yes,Yes,CMED projection of ANC Women Registered
+Magaleta Health Centre,ANC Monthly Facility Report,GzO4xPVk13pl,RHD ANC New Women Registered,zAvhV86SCLV,,,0,545,Yes,Yes,CMED projection of ANC Women Registered
+Matandani Health Centre,ANC Monthly Facility Report,GzO4xPVk15pl,RHD ANC New Women Registered,zAvhV88SCLV,,,0,599,Yes,Yes,CMED projection of ANC Women Registered
+Matope Health Centre,ANC Monthly Facility Report,GzO4xPVk16pl,RHD ANC New Women Registered,zAvhV89SCLV,,,0,958,Yes,Yes,CMED projection of ANC Women Registered
+Midzemba Health Center,ANC Monthly Facility Report,GzO4xPVk17pl,RHD ANC New Women Registered,zAvhV90SCLV,,,0,3136,Yes,Yes,CMED projection of ANC Women Registered
+Neno District Hospital,ANC Monthly Facility Report,GzO4xPVk19pl,RHD ANC New Women Registered,zAvhV92SCLV,,,0,1040,Yes,Yes,CMED projection of ANC Women Registered
+Neno Parish Health Centre,ANC Monthly Facility Report,GzO4xPVk20pl,RHD ANC New Women Registered,zAvhV93SCLV,,,0,434,Yes,Yes,CMED projection of ANC Women Registered
+Nkula Health Centre,ANC Monthly Facility Report,GzO4xPVk21pl,RHD ANC New Women Registered,zAvhV94SCLV,,,0,195,Yes,Yes,CMED projection of ANC Women Registered
+Nsambe Health Centre,ANC Monthly Facility Report,GzO4xPVk22pl,RHD ANC New Women Registered,zAvhV95SCLV,,,0,840,Yes,Yes,CMED projection of ANC Women Registered
+Tedzani Dispensary,ANC Monthly Facility Report,GzO4xPVk23pl,RHD ANC New Women Registered,zAvhV96SCLV,,,0,100,Yes,Yes,CMED projection of ANC Women Registered
+Zalewa Health Centre,ANC Monthly Facility Report,GzO4xPVk24pl,RHD ANC New Women Registered,zAvhV97SCLV,,,0,667,Yes,Yes,CMED projection of ANC Women Registered
+Chifunga Health Centre,ANC Monthly Facility Report,GzO4xPVk8pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,134,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Dambe Health Centre,ANC Monthly Facility Report,GzO4xPVk9pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,199,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Ligowe Health Centre,ANC Monthly Facility Report,GzO4xPVk10pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,193,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Lisungwi Community Hospital,ANC Monthly Facility Report,GzO4xPVk11pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,148,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Luwani Health Centre,ANC Monthly Facility Report,GzO4xPVk12pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,54,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Magaleta Health Centre,ANC Monthly Facility Report,GzO4xPVk13pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,133,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Matandani Health Centre,ANC Monthly Facility Report,GzO4xPVk15pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,97,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Matope Health Centre,ANC Monthly Facility Report,GzO4xPVk16pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,159,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Midzemba Health Center,ANC Monthly Facility Report,GzO4xPVk17pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,19,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Neno District Hospital,ANC Monthly Facility Report,GzO4xPVk19pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,356,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Neno Parish Health Centre,ANC Monthly Facility Report,GzO4xPVk20pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,156,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Nkula Health Centre,ANC Monthly Facility Report,GzO4xPVk21pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,14,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Nsambe Health Centre,ANC Monthly Facility Report,GzO4xPVk22pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,104,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Tedzani Dispensary,ANC Monthly Facility Report,GzO4xPVk23pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,7,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Zalewa Health Centre,ANC Monthly Facility Report,GzO4xPVk24pl,RHD ANC Visits per Woman Total with 5+ Visits,EUvtRZSLh2F,,,0,246,Yes,Yes,RHD ANC Visits per Woman Total with 5+ Visits for 2022
+Chifunga Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Dambe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Ligowe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Luwani Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Magaleta Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Matandani Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Matope Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Midzemba Health Center,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Neno District Hospital,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Nkula Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Nsambe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Tedzani Dispensary,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Zalewa Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of New Clients Counseled,wJiaeaLELNp,,,,,No,No,Validate only blanks
+Chifunga Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Dambe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Ligowe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Luwani Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Magaleta Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Matandani Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Matope Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Midzemba Health Center,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Neno District Hospital,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Nkula Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Nsambe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Tedzani Dispensary,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Zalewa Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of Old Clients Counseled,QcafmQwAvR4,,,,,No,No,Validate only blanks
+Chifunga Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Dambe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Ligowe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Luwani Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Magaleta Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Matandani Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Matope Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Midzemba Health Center,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Neno District Hospital,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Nkula Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Nsambe Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Tedzani Dispensary,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Zalewa Health Centre,Family Planning Monthly Report,TZwgYAeQXxL,RHD FP Number of clients Couseled Only,TPNXQ8UI5X0,,,,,No,No,Validate only blanks
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,11565,Yes,Yes,CMED population
+Dambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,14548,Yes,Yes,CMED population
+Ligowe Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,11150,Yes,Yes,CMED population
+Lisungwi Community Hospital,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,8507,Yes,Yes,CMED population
+Luwani Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,4618,Yes,Yes,CMED population
+Magaleta Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,8890,Yes,Yes,CMED population
+Matandani Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,9988,Yes,Yes,CMED population
+Matope Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,17150,Yes,Yes,CMED population
+Midzemba Health Center,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,13199,Yes,Yes,CMED population
+Neno District Hospital,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,18798,Yes,Yes,CMED population
+Neno Parish Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,6674,Yes,Yes,CMED population
+Nkula Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,1895,Yes,Yes,CMED population
+Nsambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,14803,Yes,Yes,CMED population
+Tedzani Dispensary,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,1895,Yes,Yes,"CMED population, taken from Nkula."
+Zalewa Health Centre,HMIS 15,q1Es3k3sZem,HMIS # of OPD Attendance,VEgce5WnxHV,,,0,11347,Yes,Yes,CMED population
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,2082,Yes,Yes,CMED population for under 5
+Dambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,2619,Yes,Yes,CMED population for under 5
+Ligowe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,2007,Yes,Yes,CMED population for under 5
+Lisungwi Community Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,1531,Yes,Yes,CMED population for under 5
+Luwani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,1831,Yes,Yes,CMED population for under 5
+Magaleta Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,1600,Yes,Yes,CMED population for under 5
+Matandani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,1798,Yes,Yes,CMED population for under 5
+Matope Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,3087,Yes,Yes,CMED population for under 5
+Midzemba Health Center,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,2376,Yes,Yes,CMED population for under 5
+Neno District Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,3384,Yes,Yes,CMED population for under 5
+Neno Parish Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,1201,Yes,Yes,CMED population for under 5
+Nkula Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,341,Yes,Yes,CMED population for under 5
+Nsambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,2665,Yes,Yes,CMED population for under 5
+Tedzani Dispensary,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,341,Yes,Yes,"CMED population for under 5, taken from Nkula"
+Zalewa Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Children Attending Under - Five Clinic,BjOKMvEcpXM,,,0,2042,Yes,Yes,CMED population for under 5
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Dambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Ligowe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Luwani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Magaleta Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Matandani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Matope Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Midzemba Health Center,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Neno District Hospital,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Nkula Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Nsambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Tedzani Dispensary,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Zalewa Health Centre,HMIS 15,q1Es3k3sZem,HMIS Bed Capacity,asCqjKclllu,,,,,No,No,Validate only blanks
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Dambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Ligowe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Luwani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Magaleta Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Matandani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Matope Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Midzemba Health Center,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Neno District Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Nkula Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Nsambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Tedzani Dispensary,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Zalewa Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Admissions (including Maternity),yCJBWuhuOLc,,,,,No,No,Validate only blanks
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Dambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Ligowe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Luwani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Magaleta Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Matandani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Matope Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Midzemba Health Center,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Neno District Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Nkula Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Nsambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Tedzani Dispensary,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Zalewa Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Discharges,ciW6Rv4RDR5,,,,,No,No,Validate only blanks
+Chifunga Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Dambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Ligowe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Luwani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Magaleta Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Matandani Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Matope Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Midzemba Health Center,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Neno District Hospital,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Neno Parish Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Nkula Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Nsambe Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Tedzani Dispensary,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Zalewa Health Centre,HMIS 15,q1Es3k3sZem,HMIS Total # of Inpatient Deaths from all Causes (Excluding Maternity),CpNKquO7pll,,,,,No,No,Validate only blanks
+Chifunga Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Dambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Ligowe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Luwani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Magaleta Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Matandani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Matope Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Midzemba Health Center,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Neno District Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Neno Parish Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Nkula Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Nsambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Tedzani Dispensary,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Zalewa Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,I5L8ico3FcO,New Negative,,,No,No,Validate only blanks
+Chifunga Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Dambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Ligowe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Luwani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Magaleta Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Matandani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Matope Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Midzemba Health Center,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Neno District Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Neno Parish Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Nkula Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Nsambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Tedzani Dispensary,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Zalewa Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,HTOc1MdeLFE,New Positive,,,No,No,Validate only blanks
+Chifunga Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Dambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Ligowe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Luwani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Magaleta Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Matandani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Matope Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Midzemba Health Center,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Neno District Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Neno Parish Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Nkula Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Nsambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Tedzani Dispensary,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Zalewa Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hGy4O0aDidB,New Positive Infant,,,No,No,Validate only blanks
+Chifunga Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Dambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Ligowe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Luwani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Magaleta Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Matandani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Matope Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Midzemba Health Center,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Neno District Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Neno Parish Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Nkula Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Nsambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Tedzani Dispensary,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Zalewa Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,hN0CQsWF91p,New Inconclusive,,,No,No,Validate only blanks
+Chifunga Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Dambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Ligowe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Luwani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Magaleta Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Matandani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Matope Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Midzemba Health Center,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Neno District Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Neno Parish Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Nkula Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Nsambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Tedzani Dispensary,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Zalewa Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,yNEd9CP2PBZ,Confirmatory Positive,,,No,No,Validate only blanks
+Chifunga Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Dambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Ligowe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Lisungwi Community Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Luwani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Magaleta Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Matandani Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Matope Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Midzemba Health Center,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Neno District Hospital,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Neno Parish Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Nkula Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Nsambe Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Tedzani Dispensary,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Zalewa Health Centre,HTC Health Facility Report,Yz1PMQk1QlF,HTC Result Given To Client,ZHD7BCMp8bz,Tns3Y8kFzFj,Confirmatory Inconclusive,,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP OPD Confirmed Malaria Cases,aSmSrrByuaa,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed Malaria Cases,Is1XcpgeN4I,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed Malaria Cases Clinically diagnosed,UJ4Qs3KZX4Z,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Confirmed malaria in pregnant woman,SlBjLFeSAog,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,uzb0brEkxDL,>5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Dambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Ligowe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Luwani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Magaleta Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matandani Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Matope Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Midzemba Health Center,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno District Hospital,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nkula Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Nsambe Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Tedzani Dispensary,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Zalewa Health Centre,Malaria Health Facility Report,aYZsjFwm4P9,NMCP IPD Presumed malaria in pregnant woman,seskaHc8iBY,yPIqSE6x7bs,<5Yrs,0,,No,No,Validate only blanks
+Chifunga Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Dambe Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Ligowe Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Luwani Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Magaleta Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Matandani Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Matope Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Midzemba Health Center,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Neno District Hospital,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Nkula Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Nsambe Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Tedzani Dispensary,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Zalewa Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Staff conducting Delivery MO/CO/MA/Nurse/MW default,R9CHUW81m9o,,,0,,No,No,Validate only blanks
+Chifunga Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Dambe Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Ligowe Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Luwani Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Magaleta Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Matandani Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Matope Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Midzemba Health Center,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Neno District Hospital,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Nkula Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Nsambe Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Tedzani Dispensary,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Zalewa Health Centre,Maternity Monthly Report,B0UtGNECmZW,RHD MAT Total Number of Babies,NogxNBMHqK3,,,0,,No,No,Validate only blanks
+Chifunga Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Dambe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Ligowe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Luwani Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Magaleta Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Matandani Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Matope Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Midzemba Health Center,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Neno District Hospital,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Nkula Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Nsambe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Tedzani Dispensary,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Zalewa Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC # Mother Checked in <48 Hours,JSN2CbjKFt9,,,0,,No,No,Validate only blanks
+Chifunga Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Dambe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Ligowe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Luwani Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Magaleta Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Matandani Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Matope Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Midzemba Health Center,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Neno District Hospital,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Nkula Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Nsambe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Tedzani Dispensary,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Zalewa Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Chifunga Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Dambe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Ligowe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Luwani Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Magaleta Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Matandani Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Matope Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Midzemba Health Center,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Neno District Hospital,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Neno Parish Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Nkula Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Nsambe Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Tedzani Dispensary,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Zalewa Health Centre,Post Natal Care Clinic -Facility Report,mkD9UHGim8B,RHD PNC Mother Alive,Mhob9MvpDaH,,,0,,No,No,Validate only blanks
+Chifunga Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Dambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Ligowe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Luwani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Magaleta Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Matandani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Matope Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Midzemba Health Center,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Neno District Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Neno Parish Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Nkula Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Nsambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Tedzani Dispensary,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Zalewa Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,jSlRLpMHGRI,"10-14Yrs, Male",0,,No,No,Validate only blanks
+Chifunga Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Dambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Ligowe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Luwani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Magaleta Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Matandani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Matope Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Midzemba Health Center,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Neno District Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Neno Parish Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Nkula Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Nsambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Tedzani Dispensary,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Zalewa Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,CqCmJ1p3slL,"10-14Yrs, Female",0,,No,No,Validate only blanks
+Chifunga Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Dambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Ligowe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Luwani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Magaleta Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Matandani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Matope Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Midzemba Health Center,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Neno District Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Neno Parish Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Nkula Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Nsambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Tedzani Dispensary,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Zalewa Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,urvemb7dhIv,"15-19Yrs, Male",0,,No,No,Validate only blanks
+Chifunga Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Dambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Ligowe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Luwani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Magaleta Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Matandani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Matope Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Midzemba Health Center,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Neno District Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Neno Parish Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Nkula Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Nsambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Tedzani Dispensary,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Zalewa Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,ape9HrHOEQr,"15-19Yrs, Female",0,,No,No,Validate only blanks
+Chifunga Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Dambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Ligowe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Luwani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Magaleta Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Matandani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Matope Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Midzemba Health Center,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Neno District Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Neno Parish Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Nkula Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Nsambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Tedzani Dispensary,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Zalewa Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,inWtTNCDcjS,"20-24Yrs, Male",0,,No,No,Validate only blanks
+Chifunga Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Dambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Ligowe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Lisungwi Community Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Luwani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Magaleta Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Matandani Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Matope Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Midzemba Health Center,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Neno District Hospital,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Neno Parish Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Nkula Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Nsambe Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Tedzani Dispensary,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Zalewa Health Centre,Youth Friendly Health Services Monthly Report,clFAnObeT24,RHD YFHS Information & Counseling,pc5aMN4edUo,S6inAeCJXdT,"20-24Yrs, Female",0,,No,No,Validate only blanks
+Chifunga Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,29,,No,No,Validate only blanks
+Dambe Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,36,,No,No,Validate only blanks
+Ligowe Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,28,,No,No,Validate only blanks
+Lisungwi Community Hospital,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,21,,No,No,Validate only blanks
+Luwani Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,11,,No,No,Validate only blanks
+Magaleta Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,22,,No,No,Validate only blanks
+Matandani Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,25,,No,No,Validate only blanks
+Matope Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,43,,No,No,Validate only blanks
+Midzemba Health Center,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,33,,No,No,Validate only blanks
+Neno District Hospital,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,47,,No,No,Validate only blanks
+Neno Parish Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,17,,No,No,Validate only blanks
+Nkula Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,5,,No,No,Validate only blanks
+Nsambe Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,37,,No,No,Validate only blanks
+Tedzani Dispensary,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,5,,No,No,Validate only blanks
+Zalewa Health Centre,Cervical Cancer Control Program Monthly Report,NX1lpqsalRy,Initial Screening Visit,ehD5Cud3mmp,,,28,,No,No,Validate only blanks
