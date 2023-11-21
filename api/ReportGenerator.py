@@ -129,21 +129,30 @@ class ReportGenerator:
                                         category_option_combo = data_values["categoryOptionCombo"]
                                         category_option_combo_name = \
                                             category_option_combinations_df.loc[category_option_combinations_df["id"] ==
-                                                                                data_element]["name"].iat[0]
+                                                                                category_option_combo]["name"].iat[0]
                                         column_name = column_name + " " + category_option_combo_name
                                         full_report[str(data_element) + "_" + str(category_option_combo)] = value
                                         if each_endpoint["validate_elements"] is True:
-                                            element_validation_condition = conditions_df.loc[
-                                                (conditions_df["data_set"] == data_set) &
-                                                (conditions_df[
-                                                     "facility"] == org_unit_name) &
-                                                (conditions_df[
-                                                     "data_element_id"] == data_element) &
-                                                (conditions_df["category_option_combo_id"] == category_option_combo)
-                                                ]
+                                            if category_option_combo_name != "default":
+                                                element_validation_condition = conditions_df.loc[
+                                                    (conditions_df["data_set"] == data_set) &
+                                                    (conditions_df[
+                                                         "facility"] == org_unit_name) &
+                                                    (conditions_df[
+                                                         "data_element_id"] == data_element) &
+                                                    (conditions_df["category_option_combo_id"] == category_option_combo)
+                                                    ]
+                                            else:
+                                                element_validation_condition = \
+                                                    conditions_df.loc[(conditions_df["data_set"] == data_set) &
+                                                                      (conditions_df[
+                                                                           "facility"] == org_unit_name) &
+                                                                      (conditions_df[
+                                                                           "data_element_id"] == data_element)
+                                                                      ]
                                             if not element_validation_condition.empty:
                                                 is_null, is_lower, is_upper = self.validate_element_conditions(
-                                                    element_validation_condition.iat[0], value)
+                                                    element_validation_condition, value)
                                                 self.update_condition_checks(column_name, conditions_check,
                                                                              end_date_str, is_lower,
                                                                              is_null, is_upper, org_unit_name,
@@ -161,7 +170,7 @@ class ReportGenerator:
                                                                   ]
                                             if not element_validation_condition.empty:
                                                 is_null, is_lower, is_upper = self.validate_element_conditions(
-                                                    element_validation_condition.iat[0], value)
+                                                    element_validation_condition, value)
                                                 self.update_condition_checks(column_name, conditions_check,
                                                                              end_date_str,
                                                                              is_lower,
@@ -207,17 +216,18 @@ class ReportGenerator:
         is_null = "Yes"
         is_lower = ""
         is_upper = ""
-        if str(element_validation_condition["validate_lower_bound"]).lower() == "yes":
+        value = float(value)
+        if str(element_validation_condition["validate_lower_bound"].iat[0]).lower() == "yes":
             is_null = "No"
-            lower_bound = float(element_validation_condition["lower_bound"])
+            lower_bound = float(element_validation_condition["lower_bound"].iat[0])
             if value <= lower_bound and is_null == "No":
                 is_lower = "Yes"
             else:
                 is_lower = "No"
 
-        if str(element_validation_condition["validate_lower_bound"]).lower() == "yes":
+        if str(element_validation_condition["validate_lower_bound"].iat[0]).lower() == "yes":
             is_null = "No"
-            upper_bound = float(element_validation_condition["upper_bound"])
+            upper_bound = float(element_validation_condition["upper_bound"].iat[0])
             if value >= upper_bound and is_null == "No":
                 is_upper = "Yes"
             else:
