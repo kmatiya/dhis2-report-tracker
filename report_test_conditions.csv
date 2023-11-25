@@ -1,0 +1,39 @@
+resource,data_set,name,org_units,frequency,report_due_day,short_name
+/dataValueSets,GzO4xPVk8pl,ANC Monthly Facility Report,Neno District Hospital,Monthly,15,anc_monthly
+/dataValueSets,P4oPxnYmYHY,CBMNC Monthly Report,Neno District Hospital,Monthly,15,cbmnc_monthly
+/dataValueSets,ZABjSFibfGV,CMAM Stock Sheet Monthly Report,Neno District Hospital,Monthly,15,cmam_monthly
+/dataValueSets,NX1lpqsalRy,Cervical Cancer Control Program Monthly Report,Neno District Hospital,Monthly,15,cervical_cancer_monthly
+/dataValueSets,gPAyiHYXHBI,Covid 19 Monthly Reporting Form,Neno District Hospital,Monthly,15,covid_19_monthly
+/dataValueSets,xKmkoAZLEGU,EPI Vaccination Performance and Disease Surveillance (NEW),Neno District Hospital,Monthly,15,epi_monthly
+/dataValueSets,cCsbOg15aNB,Exposed Child Under 24 Months-Follow Up,Neno District Hospital,Monthly,15,exposed_infant_monthly
+/dataValueSets,TZwgYAeQXxL,Family Planning Monthly Report,Neno District Hospital,Monthly,15,family_planning_monthly
+/dataValueSets,IhVEF2U4zhn,HIV Self-Test Distribution Monthly Report,Neno District Hospital,Monthly,15,hiv_self_test_monthly
+/dataValueSets,q1Es3k3sZem,HMIS 15,Neno District Hospital,Monthly,15,hmis_15_monthly
+/dataValueSets,Yz1PMQk1QlF,HTC Health Facility Report,Neno District Hospital,Monthly,15,htc_monthly
+/dataValueSets,hWDsGIjs16g,IMCI Village Clinic Monthly Consolidation Report,Neno District Hospital,Monthly,15,imci_monthly
+/dataValueSets,ACmZFToDqxh,Kangaroo Mother Care Monthly Reporting Form,Neno District Hospital,Monthly,15,kangaroo_monthly
+/dataValueSets,aYZsjFwm4P9,Malaria Health Facility Report,Neno District Hospital,Monthly,15,malaria_monthly
+/dataValueSets,U31O0OHvtuS,Maternal and Neonatal Death Report,Neno District Hospital,Monthly,15,maternal_monthly
+/dataValueSets,B0UtGNECmZW,Maternity Monthly Report,Neno District Hospital,Monthly,15,maternity_monthly
+/dataValueSets,Fdn3C7gKoju,Mental Health Facility Report,Neno District Hospital,Monthly,15,mental_health_monthly
+/dataValueSets,u6Hzce4ljhO,Monthly Surveillance Report Form (IDSR),Neno District Hospital,Monthly,15,monthly_surveillance
+/dataValueSets,Ypkc56U3ecs,NCST Monthly Report,Neno District Hospital,Monthly,15,ncst_monthly
+/dataValueSets,I6cB2WrHnNF,NRU Monthly Report,Neno District Hospital,Monthly,15,nru_monthly
+/dataValueSets,xQUOwRouoUc,OTP Monthly Report,Neno District Hospital,Monthly,15,otp_monthly
+/dataValueSets,EzqGB7LV5SO,Ombudsman Monthly Reporting Form,Neno District Hospital,Monthly,15,ombudsman_monthly
+/dataValueSets,I93JjJkJfhB,Palliative Care Monthly Reporting Form,Neno District Hospital,Monthly,15,palliative_monthly
+/dataValueSets,a7bx6nhebxi,Physiotherapy Monthly Reporting Form,Neno District Hospital,Monthly,15,physiotherapy_monthly
+/dataValueSets,mkD9UHGim8B,Post Natal Care Clinic -Facility Report,Neno District Hospital,Monthly,15,post_natal_monthly
+/dataValueSets,JyCRZ1d9TLr,SFP Monthly Report,Neno District Hospital,Monthly,15,sfp_monthly
+/dataValueSets,ensHdPmqS5l,STI Monthly Report,Neno District Hospital,Monthly,15,sti_monthly
+/dataValueSets,JPOW1m0J9F2,Social Behaviour Change and Communication District Monthly Reporting Form,Neno District Hospital,Monthly,15,social_behaviour_monthly
+/dataValueSets,SibrDizn3Ha,VMMC Monthly Report,Neno District Hospital,Monthly,15,vmmc_monthly
+/dataValueSets,clFAnObeT24,Youth Friendly Health Services Monthly Report,Neno District Hospital,Monthly,15,youth_friendly_monthly
+/dataValueSets,ft7wAzSPfw5,Comprehensive Abortion Care Reporting Form,Neno District Hospital,Monthly,15,comprehensive_abortion_monthly
+/dataValueSets,WumH0XCnHT7,Non Communicable Diseases Quarterly Reporting Form,Neno District Hospital,Quarterly,15,non_communicable_quarterly
+/dataValueSets,mLAtASimykI,ART Reporting Form - Part 2,Neno District Hospital,Quarterly,25,art_quarterly
+/dataValueSets,AtTb95TRx2Y,"TB CDE, Community, CI and KP reporting form",Neno District Hospital,Quarterly,25,tb_cde_quarterly
+/dataValueSets,zhGkS89Ju5r,TB Case Findings Quarterly Report New,Neno District Hospital,Quarterly,25,tb_case_findings_quarterly
+/dataValueSets,h4POFOPbISK,TB Laboratory reporting form,Neno District Hospital,Quarterly,25,tb_laboratory_quarterly
+/dataValueSets,fOiOJU7Vt2n,TB Treatment Outcomes Quarterly reporting form New,Neno District Hospital,Quarterly,25,tb_treatment_outcome_quarterly
+/dataValueSets,OiOMthNx0Tu,TB-HIV Quarterly Reporting Form New,Neno District Hospital,Quarterly,25,tb_hiv_quarterly
