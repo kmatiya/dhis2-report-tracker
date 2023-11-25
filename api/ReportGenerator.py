@@ -1,8 +1,5 @@
 import pandas as pd
 from datetime import datetime, timedelta
-from datetime import date
-import os
-import os.path
 from copy import deepcopy
 from api.DbService import DbService
 
@@ -41,7 +38,6 @@ class ReportGenerator:
                                         engine='xlsxwriter',
                                         engine_kwargs={'options': {'strings_to_numbers': True}})
         tracker_report_dict = []
-        base_location = self.__config["base_file_path"]
         data_elements_df = pd.DataFrame.from_dict(data_elements)
         data_elements_df.rename(columns={'displayName': 'name'}, inplace=True)
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
@@ -118,65 +114,28 @@ class ReportGenerator:
                                     report["entered_on_time"] = "No"
                                 report["date_entered_in_system"] = date_created.date()
                                 report["days_difference_from_due_date"] = days_diff
+
+                                if each_endpoint["validate_elements"] is True:
+                                    report_conditions = conditions_df.loc[(conditions_df["data_set"] == data_set) &
+                                                                          (conditions_df[
+                                                                               "facility"] == org_unit_name)]
+
+                                    if not report_conditions.empty:
+                                        self.validate_data_elements(conditions_check, df_x, end_date_str, org_unit_name,
+                                                                    report,
+                                                                    report_conditions, report_date, report_frequency,
+                                                                    report_name)
+
                                 full_report = deepcopy(report)
                                 for key, data_element_series in df_x.iterrows():
                                     data_values = data_element_series.to_dict()
                                     value = data_values['value']
                                     data_element = data_values["dataElement"]
-                                    column_name = data_elements_df.loc[data_elements_df["id"] ==
-                                                                       data_element]["name"].iat[0]
                                     if "categoryOptionCombo" in data_values:
                                         category_option_combo = data_values["categoryOptionCombo"]
-                                        category_option_combo_name = \
-                                            category_option_combinations_df.loc[category_option_combinations_df["id"] ==
-                                                                                category_option_combo]["name"].iat[0]
-                                        column_name = column_name + " " + category_option_combo_name
                                         full_report[str(data_element) + "_" + str(category_option_combo)] = value
-                                        if each_endpoint["validate_elements"] is True:
-                                            if category_option_combo_name != "default":
-                                                element_validation_condition = conditions_df.loc[
-                                                    (conditions_df["data_set"] == data_set) &
-                                                    (conditions_df[
-                                                         "facility"] == org_unit_name) &
-                                                    (conditions_df[
-                                                         "data_element_id"] == data_element) &
-                                                    (conditions_df["category_option_combo_id"] == category_option_combo)
-                                                    ]
-                                            else:
-                                                element_validation_condition = \
-                                                    conditions_df.loc[(conditions_df["data_set"] == data_set) &
-                                                                      (conditions_df[
-                                                                           "facility"] == org_unit_name) &
-                                                                      (conditions_df[
-                                                                           "data_element_id"] == data_element)
-                                                                      ]
-                                            if not element_validation_condition.empty:
-                                                is_null, is_lower, is_upper = self.validate_element_conditions(
-                                                    element_validation_condition, value)
-                                                self.update_condition_checks(column_name, conditions_check,
-                                                                             end_date_str, is_lower,
-                                                                             is_null, is_upper, org_unit_name,
-                                                                             report_date,
-                                                                             report_frequency, report_name, value)
                                     else:
                                         full_report[data_element] = value
-                                        if each_endpoint["validate_elements"] is True:
-                                            element_validation_condition = \
-                                                conditions_df.loc[(conditions_df["data_set"] == data_set) &
-                                                                  (conditions_df[
-                                                                       "facility"] == org_unit_name) &
-                                                                  (conditions_df[
-                                                                       "data_element_id"] == data_element)
-                                                                  ]
-                                            if not element_validation_condition.empty:
-                                                is_null, is_lower, is_upper = self.validate_element_conditions(
-                                                    element_validation_condition, value)
-                                                self.update_condition_checks(column_name, conditions_check,
-                                                                             end_date_str,
-                                                                             is_lower,
-                                                                             is_null, is_upper, org_unit_name,
-                                                                             report_date,
-                                                                             report_frequency, report_name, value)
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
                     full_report_final_df = pd.DataFrame.from_records(full_report_dict)
@@ -196,40 +155,57 @@ class ReportGenerator:
             db_service.write_to_db("category_option_combinations", category_option_combinations_df)
             print("Ending time" + str(datetime.now()))
 
-    def update_condition_checks(self, column_name, conditions_check, end_date_str, is_lower, is_null, is_upper,
-                                org_unit_name,
-                                report_date, report_frequency, report_name, value):
-        conditions_check.append({
-            "date": report_date.date(),
-            "facility": org_unit_name,
-            "report_name": report_name,
-            "frequency": report_frequency,
-            "data_element": column_name,
-            "is_lower": is_lower,
-            "is_upper": is_upper,
-            "is_null": is_null,
-            "value": value,
-            "date_created_in_db": end_date_str
-        })
+    def validate_data_elements(self, conditions_check, df_x, end_date_str, org_unit_name, report, report_conditions,
+                               report_date,
+                               report_frequency, report_name):
+        for a, each_condition in report_conditions.iterrows():
+            is_null = "Yes"
+            is_lower = ""
+            is_upper = ""
+            value = ''
 
-    def validate_element_conditions(self, element_validation_condition, value):
-        is_null = "Yes"
-        is_lower = ""
-        is_upper = ""
-        value = float(value)
-        if str(element_validation_condition["validate_lower_bound"].iat[0]).lower() == "yes":
-            is_null = "No"
-            lower_bound = float(element_validation_condition["lower_bound"].iat[0])
-            if value <= lower_bound and is_null == "No":
-                is_lower = "Yes"
-            else:
-                is_lower = "No"
+            column_name = each_condition["data_element"]
+            print(f"Start Validating for {report_name} for {column_name} for {org_unit_name} for the date "
+                  f"{report_date.date()}")
+            condition = each_condition["data_element_id"]
+            category_option_combo_id = str(each_condition["category_option_combo_id"])
+            category_option_combo_name = str(each_condition["category_option_combo_name"])
+            df_x_filtered = df_x[df_x['dataElement'] == condition]
+            if category_option_combo_id.strip().lower() != 'nan':
+                df_x_filtered = df_x_filtered[
+                    df_x_filtered['categoryOptionCombo'] == category_option_combo_id]
+            if not df_x_filtered.empty:
+                if category_option_combo_id.strip().lower() != 'nan':
+                    column_name = column_name + " " + category_option_combo_name
+                    df_x_filtered = df_x_filtered[
+                        df_x_filtered['categoryOptionCombo'] == category_option_combo_id]
 
-        if str(element_validation_condition["validate_lower_bound"].iat[0]).lower() == "yes":
-            is_null = "No"
-            upper_bound = float(element_validation_condition["upper_bound"].iat[0])
-            if value >= upper_bound and is_null == "No":
-                is_upper = "Yes"
-            else:
-                is_upper = "No"
-        return is_null, is_lower, is_upper
+                is_null = "No"
+                value = float(df_x_filtered['value'].iat[0])
+                lower_bound = float(each_condition["lower_bound"])
+                upper_bound = float(each_condition["upper_bound"])
+                if str(each_condition["validate_lower_bound"]).lower() == "yes":
+                    if value <= lower_bound and is_null == "No":
+                        is_lower = "Yes"
+                    else:
+                        is_lower = "No"
+                if str(each_condition["validate_upper_bound"]).lower() == "yes":
+                    if value >= upper_bound and is_null == "No":
+                        is_upper = "Yes"
+                    else:
+                        is_upper = "No"
+                print(f"Validating for {report_name} for {column_name} for {org_unit_name} for the date "
+                      f"{report_date.date()} complete")
+            conditions_check.append({
+                "date": report_date.date(),
+                "facility": org_unit_name,
+                "report_name": report_name,
+                "report_in_the_report": report["report_in_the_system"],
+                "frequency": report_frequency,
+                "data_element": column_name,
+                "is_lower": is_lower,
+                "is_upper": is_upper,
+                "is_null": is_null,
+                "value": value,
+                "date_created_in_db": end_date_str
+            })
