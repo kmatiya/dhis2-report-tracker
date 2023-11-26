@@ -32,3 +32,23 @@ class DbService:
         df = df.drop(columns=["index"])
         conn.close()
         return df
+
+    def get_from_db_by_columns(self, table_name, columns: list):
+        conn = psycopg2.connect(
+            database=self.__database,
+            user=self.__user,
+            password=self.__password,
+            host=self.__host,
+            port=self.__port
+        )
+
+        cur = conn.cursor()
+        cur.execute(f"""SELECT * FROM {table_name}
+                    """)
+
+        column_names = [desc[0] for desc in cur.description]
+        tuples_list = cur.fetchall()
+        df = pd.DataFrame(tuples_list, columns=column_names)
+        df = df.loc[:, df.columns.isin(columns)]
+        conn.close()
+        return df
