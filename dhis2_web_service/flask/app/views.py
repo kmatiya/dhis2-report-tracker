@@ -22,6 +22,7 @@ db_service = DbService(database=db_config["db_name"], user=db_config["db_user"],
 
 time.sleep(config["time_delay"])
 
+
 @auth.verify_password
 def verify_password(username, password):
     if username in users and \
@@ -35,9 +36,14 @@ def index(table_name):
     try:
         data_elements_df = db_service.get_from_db("data_elements")
         category_option_combinations_df = db_service.get_from_db("category_option_combinations")
-        table_df = db_service.get_from_db(table_name)
+        if table_name == "family_planning_monthly":
+            db_columns = config["db_columns"][table_name]
+            report_element_columns = list(db_columns.values())
+            table_df = db_service.get_from_db_by_columns(table_name, report_element_columns)
+        else:
+            table_df = db_service.get_from_db(table_name)
+            report_element_columns = table_df.columns.tolist()[9:]
         table_df = table_df.replace([None], "")
-        report_element_columns = table_df.columns.tolist()[9:]
         for each_column_name in report_element_columns:
             column_list = str(each_column_name).split("_")
             if len(column_list) == 1:
@@ -55,29 +61,3 @@ def index(table_name):
         return table_df.to_html()
     except:
         abort(500)
-
-
-'''@app.route('/')
-@auth.login_required
-def index():
-    hmis_15_df = db_service.get_from_db("hmis_15")
-    report_element_columns = hmis_15_df.columns.tolist()[9:]
-    for each_column_name in report_element_columns:
-        column_list = str(each_column_name).split("_")
-        if len(column_list) == 1:
-            data_element = data_elements_df[data_elements_df["id"] == column_list[0]]["name"].iat[0]
-            hmis_15_df.rename(columns={each_column_name: data_element}, inplace=True)
-        else:
-            data_element = data_elements_df[data_elements_df["id"] == column_list[0]]["name"].iat[0]
-            category_option_combination = category_option_combinations_df[category_option_combinations_df["id"] ==
-                                                                          column_list[1]]["name"].iat[0]
-            if category_option_combination is None:
-                hmis_15_df.rename(columns={each_column_name: data_element + " None"}, inplace=True)
-            else:
-                hmis_15_df.rename(columns={each_column_name: f"{data_element} {category_option_combination}"},
-                                  inplace=True)
-    report = []
-    for index, each_row in hmis_15_df.iterrows():
-        # print(each_row.to_json())
-        report.append(each_row.to_json())
-    return report'''
