@@ -10,6 +10,14 @@ config = {
     "db_columns": {
         "family_planning_monthly":
             {
+                "date": "date",
+                "facility": "facility",
+                "report_name": "report_name",
+                "date_created_in_db": "date_created_in_db",
+                "report_in_the_system": "report_in_the_system",
+                "entered_on_time": "entered_on_time",
+                "date_entered_in_system": "date_entered_in_system",
+                "days_difference_from_due_date": "days_difference_from_due_date",
                 "RHD FP Age Of New Clients On Ceasarean Section 10-14Yrs": "zKmqHtLrUg4_PMPDwPtyrYG",
                 "RHD FP Age Of New Clients On Ceasarean Section 15-19Yrs": "zKmqHtLrUg4_F5knYtjFPaJ",
                 "RHD FP Age Of New Clients On Combined oral 10-14Yrs": "T6VHd7wxJxv_PMPDwPtyrYG",
