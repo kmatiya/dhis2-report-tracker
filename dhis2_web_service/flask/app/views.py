@@ -38,11 +38,11 @@ def index(table_name):
         category_option_combinations_df = db_service.get_from_db("category_option_combinations")
         if table_name == "family_planning_monthly":
             db_columns = config["db_columns"][table_name]
-            report_element_columns = list(db_columns.values())
-            table_df = db_service.get_from_db_by_columns(table_name, report_element_columns)
+            column_values = list(db_columns.values())
+            table_df = db_service.get_from_db_by_columns(table_name, column_values)
         else:
             table_df = db_service.get_from_db(table_name)
-            report_element_columns = table_df.columns.tolist()[9:]
+        report_element_columns = table_df.columns.tolist()[9:]
         table_df = table_df.replace([None], "")
         for each_column_name in report_element_columns:
             column_list = str(each_column_name).split("_")

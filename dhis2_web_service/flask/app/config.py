@@ -14,6 +14,7 @@ config = {
                 "facility": "facility",
                 "report_name": "report_name",
                 "date_created_in_db": "date_created_in_db",
+                "frequency": "frequency",
                 "report_in_the_system": "report_in_the_system",
                 "entered_on_time": "entered_on_time",
                 "date_entered_in_system": "date_entered_in_system",
