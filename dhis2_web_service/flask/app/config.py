@@ -1,5 +1,5 @@
 config = {
-    "time_delay": 10,
+    "time_delay": 600,
     "db_config": {
         "db_host": "dhis2_postgres_container",
         "db_name": "dhis2",
