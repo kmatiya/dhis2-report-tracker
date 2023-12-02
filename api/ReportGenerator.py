@@ -28,7 +28,7 @@ class ReportGenerator:
             period = split_date[0] + "Q" + str(timestamp.quarter)
         return period
 
-    def get_data_frame(self, data_elements, category_option_combos, db_service: DbService):
+    def get_data_frame(self, db_service: DbService):
         date_format = "%Y-%m-%d"
         date_and_time_format = "%Y-%m-%d %H:%M:%S"
         conditions_check = []
@@ -38,11 +38,7 @@ class ReportGenerator:
                                         engine='xlsxwriter',
                                         engine_kwargs={'options': {'strings_to_numbers': True}})
         tracker_report_dict = []
-        data_elements_df = pd.DataFrame.from_dict(data_elements)
-        data_elements_df.rename(columns={'displayName': 'name'}, inplace=True)
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
-        category_option_combinations_df = pd.DataFrame.from_dict(category_option_combos)
-        category_option_combinations_df.rename(columns={'displayName': 'name'}, inplace=True)
         print("Create files for each report")
 
         for each_endpoint in self.__config["endpoints"]:
@@ -98,6 +94,7 @@ class ReportGenerator:
                                 report["report_in_the_system"] = "No"
                                 report["entered_on_time"] = "No"
                                 tracker_report_dict.append(report)
+                                tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
                             else:
                                 report["report_in_the_system"] = "Yes"
@@ -151,8 +148,6 @@ class ReportGenerator:
                 conditions_check_df.to_excel("conditions_check.xlsx", index=False)
                 db_service.write_to_db("data_element_validation", conditions_check_df)
             db_service.write_to_db("dhis2_report_summary", tracker_final_df)
-            db_service.write_to_db("data_elements", data_elements_df)
-            db_service.write_to_db("category_option_combinations", category_option_combinations_df)
             print("Ending time" + str(datetime.now()))
 
     def validate_data_elements(self, conditions_check, df_x, end_date_str, org_unit_name, report, report_conditions,

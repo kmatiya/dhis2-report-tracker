@@ -1,5 +1,5 @@
 import time
-
+import pandas as pd
 from api.HttpReportService import HttpReportService
 from api.ReportGenerator import ReportGenerator
 from api.DbService import DbService
@@ -28,9 +28,16 @@ def generate_reports():
                                        password=each_config['db_password'],
                                        host=each_config['db_host'],
                                        port=each_config["db_port"])
+                data_elements = get_data_elements["dataElements"]
+                data_elements_df = pd.DataFrame.from_dict(data_elements)
+                data_elements_df.rename(columns={'displayName': 'name'}, inplace=True)
+                db_service.write_to_db("data_elements", data_elements_df)
+                category_option_combos = category_option_combos["categoryOptionCombos"]
+                category_option_combinations_df = pd.DataFrame.from_dict(category_option_combos)
+                category_option_combinations_df.rename(columns={'displayName': 'name'}, inplace=True)
+                db_service.write_to_db("category_option_combinations", category_option_combinations_df)
                 report_generator = ReportGenerator(reports, config)
-                report_generator.get_data_frame(get_data_elements["dataElements"],
-                                                category_option_combos["categoryOptionCombos"], db_service=db_service)
+                report_generator.get_data_frame(db_service=db_service)
                 print("Complete generating reports")
             print("Ending saving in database at " + str(datetime.now()))
         except Exception as e:
