@@ -1,0 +1,60 @@
+version: '2'
+
+  # Configures database volumes
+volumes:
+  db-ndp-data:
+
+services:
+  # Creation of dhis2 database
+  ndp_db:
+    container_name: ndp_postgres_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: dhis2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 9%4qP7b2H!%J
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    volumes:
+      - db-ndp-data:/var/lib/postgresql/data
+  
+  # Creation of PgAdmin4
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: kmatiya@pih.org
+      PGADMIN_DEFAULT_PASSWORD: pihneno2007
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8083:80"
+
+  ndp_service:
+    container_name: ndp_service_container
+    restart: always
+    build: .
+    depends_on:
+      - ndp_db
+
+  flask:
+    build: ./dhis2_web_service/flask
+    container_name: ndp_flask
+    restart: always
+    depends_on:
+      - ndp_db
+    environment:
+      - APP_NAME=MyFlaskApp
+    expose:
+      - 8085
+  
+  nginx:
+    build: ./dhis2_web_service/nginx
+    container_name: ndp_nginx
+    restart: always
+    depends_on:
+      - dhis2_db
+    ports:
+      - "8091:8083"
