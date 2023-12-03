@@ -22,15 +22,15 @@ services:
   
   # Creation of PgAdmin4
   pgadmin:
-    container_name: pgadmin4_container
+    container_name: ndp_pgadmin4_container
     image: dpage/pgadmin4:latest
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: kmatiya@pih.org
       PGADMIN_DEFAULT_PASSWORD: pihneno2007
-      PGADMIN_LISTEN_PORT: 80
+      PGADMIN_LISTEN_PORT: 8083
     ports:
-      - "8083:80"
+      - "8083:8083"
 
   ndp_service:
     container_name: ndp_service_container
@@ -55,6 +55,6 @@ services:
     container_name: ndp_nginx
     restart: always
     depends_on:
-      - dhis2_db
+      - ndp_db
     ports:
       - "8091:8083"
