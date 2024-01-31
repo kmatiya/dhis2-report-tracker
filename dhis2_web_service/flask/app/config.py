@@ -158,7 +158,7 @@ config = {
             }
     },
     "users": {
-        "apzu_user": "apzu%$2023",
+        "user": "user",
         "user1": "password"
     }
 }
