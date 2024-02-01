@@ -18,7 +18,8 @@ Once the data is pulled from the server, it is transformed longitudinally for ea
 -  Install docker by following this [link](https://docs.docker.com/engine/install/)
   
 **Install docker-compose**     
- 
+- Install docker-compose by following this [link](https://docs.docker.com/compose/install/)
+   
 **Get Report Tracker Repository**
 -  git clone https://github.com/kmatiya/dhis2-report-tracker/
 -  Configure repository
