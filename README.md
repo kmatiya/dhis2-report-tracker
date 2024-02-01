@@ -22,7 +22,15 @@ Once the data is pulled from the server, it is transformed longitudinally for ea
 -  Configure repository
 -  cd dhis2-report-tracker
 -  open pihmalawi_config.py add DHIS2 API URL, username and password
+  
 **Build Docker Images**
 -  docker-compose build -f dhis2-docker-compose.yml
+  
 **Run Docker Containers**
 -  docker-compose up -d
+
+## Using your local development environment
+With a browser, use this URL to access PgAdmin4 and can configure to view the database:
+> http://localhost:8082/browser/
+With a browser, use this URL to access a report based on the report names in the pihmalawi_config.py report_file_name:
+> http://localhost:8090/{report_name}
