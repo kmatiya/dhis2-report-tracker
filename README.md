@@ -14,15 +14,15 @@ Once the data is pulled from the server, it is transformed longitudinally for ea
 -  For the datasets / reports, these can be connected the same way explained in f but the challenge will be translating the columns into a readable format. The solution to this, a web service was developed to handle translating the columns into a readable format which Power BI and any third party application can connect to.
 
 # Installation
-# Install Docker
+**Install Docker**
 -  Install docker by following this [link](https://docs.docker.com/engine/install/)
-# Install docker-compose
-# Get Report Tracker Repository
+**Install docker-compose**
+**Get Report Tracker Repository**
 -  git clone https://github.com/kmatiya/dhis2-report-tracker/
 -  Configure repository
 -  cd dhis2-report-tracker
 -  open pihmalawi_config.py add DHIS2 API URL, username and password
-# Build Docker Images
+**Build Docker Images**
 -  docker-compose build -f dhis2-docker-compose.yml
-# Run Docker Containers
+**Run Docker Containers**
 -  docker-compose up -d
