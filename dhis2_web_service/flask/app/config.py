@@ -154,12 +154,9 @@ config = {
                 "CHD EPI Fully Immunized children": "NxggSy8gzqo",
                 "CHD EPI Protection At Birth (PAB) Childhood Vaccination Outreach, Under 1": "ds8EuoyoTUK_H5xzz0m9zyd",
                 "CHD EPI Protection At Birth (PAB) Childhood Vaccination Static, Under 1": "ds8EuoyoTUK_UHR4d8LgGou",
-
             },
     },
     "users": {
         "apzu_user": "apzu%$2023",
-        "user": "user",
-        "user1": "password"
     }
 }
