@@ -36,7 +36,9 @@ def index(table_name):
     try:
         data_elements_df = db_service.get_from_db("data_elements")
         category_option_combinations_df = db_service.get_from_db("category_option_combinations")
-        if table_name == "family_planning_monthly":
+        # if table_name == "family_planning_monthly_pbi" or table_name == "epi_monthly_pbi":
+        if table_name[-4:] == "_pbi":
+            table_name =table_name.replace("_pbi","")
             db_columns = config["db_columns"][table_name]
             column_values = list(db_columns.values())
             table_df = db_service.get_from_db_by_columns(table_name, column_values)
