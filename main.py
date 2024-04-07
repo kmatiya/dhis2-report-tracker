@@ -37,7 +37,7 @@ def generate_reports():
                 category_option_combinations_df.rename(columns={'displayName': 'name'}, inplace=True)
                 db_service.write_to_db("category_option_combinations", category_option_combinations_df)
                 report_generator = ReportGenerator(reports, config)
-                report_generator.get_data_frame(db_service=db_service)
+                report_generator.get_data_frame(db_service, data_elements_df, category_option_combinations_df)
                 print("Complete generating reports")
             print("Ending saving in database at " + str(datetime.now()))
         except Exception as e:

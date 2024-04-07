@@ -28,7 +28,7 @@ class ReportGenerator:
             period = split_date[0] + "Q" + str(timestamp.quarter)
         return period
 
-    def get_data_frame(self, db_service: DbService):
+    def get_data_frame(self, db_service: DbService, data_elements_df, category_option_combinations_df):
         date_format = "%Y-%m-%d"
         date_and_time_format = "%Y-%m-%d %H:%M:%S"
         conditions_check = []
@@ -38,6 +38,7 @@ class ReportGenerator:
                                         engine='xlsxwriter',
                                         engine_kwargs={'options': {'strings_to_numbers': True}})
         tracker_report_dict = []
+        colum_name_with_id = {}
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         print("Create files for each report")
 
@@ -127,17 +128,36 @@ class ReportGenerator:
                                     data_values = data_element_series.to_dict()
                                     value = data_values['value']
                                     data_element = data_values["dataElement"]
+                                    data_element_name = \
+                                        data_elements_df[data_elements_df['id'] == data_element]['name'].iat[0]
+
                                     if "categoryOptionCombo" in data_values:
                                         category_option_combo = data_values["categoryOptionCombo"]
+                                        category_option_combo_name = \
+                                            category_option_combinations_df[category_option_combinations_df['id'] == category_option_combo][
+                                                'name'].iat[0]
                                         full_report[str(data_element) + "_" + str(category_option_combo)] = value
+                                        column_name = str(data_element_name + "" + category_option_combo_name)
+                                        colum_name_with_id[str(data_element) + "_" + str(category_option_combo)] = column_name
+
                                     else:
                                         full_report[data_element] = value
+                                        column_name = data_element_name
+                                        colum_name_with_id[data_element] = column_name
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
                     full_report_final_df = pd.DataFrame.from_records(full_report_dict)
-                    db_service.write_to_db(report_short_name, full_report_final_df)
+                    # db_service.write_to_db(report_short_name, full_report_final_df)
                     full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
+
+            coded_names = []
+            full_names = []
+            for coded_name, full_name in colum_name_with_id.items():
+                coded_names.append(coded_name)
+                full_names.append(full_name)
+            column_names_df = pd.DataFrame({'CodedName': coded_names, 'FullName': full_names})
+
             tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)
             tracker_final_df.to_excel(tracker_writer, index=False, sheet_name=tracker_report_file)
             tracker_writer.close()
@@ -147,6 +167,10 @@ class ReportGenerator:
                 conditions_check_df.to_excel("conditions_check.xlsx", index=False)
                 db_service.write_to_db("data_element_validation", conditions_check_df)
             db_service.write_to_db("dhis2_report_summary", tracker_final_df)
+            db_service.write_to_db("column_names_summary", column_names_df)
+            print("column names table has been added to db")
+            column_names_df.to_excel("full_column_names.xlsx", index=False)
+
             print("Ending time" + str(datetime.now()))
 
     def validate_data_elements(self, conditions_check, df_x, end_date_str, org_unit_name, report, report_conditions,
@@ -159,8 +183,8 @@ class ReportGenerator:
             value = ''
 
             column_name = each_condition["data_element"]
-            print(f"Start Validating for {report_name} for {column_name} for {org_unit_name} for the date "
-                  f"{report_date.date()}")
+            # print(f"Start Validating for {report_name} for {column_name} for {org_unit_name} for the date "
+            #       f"{report_date.date()}")
             condition = each_condition["data_element_id"]
             category_option_combo_id = str(each_condition["category_option_combo_id"])
             category_option_combo_name = str(each_condition["category_option_combo_name"])
@@ -188,8 +212,8 @@ class ReportGenerator:
                         is_upper = "Yes"
                     else:
                         is_upper = "No"
-                print(f"Validating for {report_name} for {column_name} for {org_unit_name} for the date "
-                      f"{report_date.date()} complete")
+                # print(f"Validating for {report_name} for {column_name} for {org_unit_name} for the date "
+                #       f"{report_date.date()} complete")
             conditions_check.append({
                 "date": report_date.date(),
                 "facility": org_unit_name,
