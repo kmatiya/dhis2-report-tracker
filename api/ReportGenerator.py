@@ -38,7 +38,8 @@ class ReportGenerator:
                                         engine='xlsxwriter',
                                         engine_kwargs={'options': {'strings_to_numbers': True}})
         tracker_report_dict = []
-        colum_name_dict = []
+        column_name_dict = []
+        duplicate_columns_df = pd.read_csv(self.__config["duplicate_columns_file_name"])
         org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         print("Create files for each report")
 
@@ -136,23 +137,32 @@ class ReportGenerator:
                                         category_option_combo_name = \
                                             category_option_combinations_df[category_option_combinations_df['id'] == category_option_combo][
                                                 'name'].iat[0]
-                                        full_report[str(data_element) + "_" + str(category_option_combo)] = value
+                                        coded_name = str(data_element) + "_" + str(category_option_combo)
+                                        full_report[coded_name] = value
                                         column_name = str(data_element_name + " " + category_option_combo_name)
-                                        name_combo = {"coded_name": str(data_element) + "_" + str(category_option_combo), "full_name": column_name}
-                                        colum_name_dict.append(name_combo)
+                                        name_combo = {"coded_name": coded_name, "full_name": column_name}
+                                        # Rename duplicate column names recorded in duplicate_columns.csv file with (old) postfix
+                                        if coded_name in duplicate_columns_df["column_id"].values:
+                                            custom_column_name = column_name+" "+"(old)"
+                                            name_combo = {"coded_name": coded_name, "full_name": custom_column_name}
+                                            column_name_dict.append(name_combo)
+                                        else:
+                                            column_name_dict.append(name_combo)
                                     else:
                                         full_report[data_element] = value
                                         name_combo = {"coded_name": data_element, "full_name": data_element_name}
-                                        colum_name_dict.append(name_combo)
+                                        column_name_dict.append(name_combo)
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
                     full_report_final_df = pd.DataFrame.from_records(full_report_dict)
                     db_service.write_to_db(report_short_name, full_report_final_df)
                     full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
-            column_names_df = pd.DataFrame(colum_name_dict)
+            # save column names table to the database.
+            column_names_df = pd.DataFrame(column_name_dict)
             column_names_df = column_names_df.drop_duplicates(column_names_df)
             db_service.write_to_db("column_names_summary", column_names_df)
+            # End of column saving code.
             tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)
             tracker_final_df.to_excel(tracker_writer, index=False, sheet_name=tracker_report_file)
             tracker_writer.close()
@@ -162,8 +172,6 @@ class ReportGenerator:
                 conditions_check_df.to_excel("conditions_check.xlsx", index=False)
                 db_service.write_to_db("data_element_validation", conditions_check_df)
             db_service.write_to_db("dhis2_report_summary", tracker_final_df)
-            column_names_df.to_excel("full_column_names.xlsx", index=False)
-
             print("Ending time" + str(datetime.now()))
 
     def validate_data_elements(self, conditions_check, df_x, end_date_str, org_unit_name, report, report_conditions,
