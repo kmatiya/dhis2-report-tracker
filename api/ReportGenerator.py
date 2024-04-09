@@ -138,12 +138,11 @@ class ReportGenerator:
                                                 'name'].iat[0]
                                         full_report[str(data_element) + "_" + str(category_option_combo)] = value
                                         column_name = str(data_element_name + " " + category_option_combo_name)
-                                        name_combo = {"coded_name": data_element, "full_name": column_name}
+                                        name_combo = {"coded_name": str(data_element) + "_" + str(category_option_combo), "full_name": column_name}
                                         colum_name_dict.append(name_combo)
                                     else:
                                         full_report[data_element] = value
-                                        column_name = data_element_name
-                                        name_combo = {"coded_name": data_element, "full_name": column_name}
+                                        name_combo = {"coded_name": data_element, "full_name": data_element_name}
                                         colum_name_dict.append(name_combo)
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
