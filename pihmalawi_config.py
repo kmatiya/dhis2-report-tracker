@@ -6,6 +6,7 @@ config = {
     "full_report_file_name": "DHIS2 Full Report",
     "data_elements_file_name": "data_elements.csv",
     "org_units_file_name": "org_units.csv",
+    "duplicate_columns_file_name": "duplicate_columns.csv",
     "category_option_combinations": "category_option_combinations.csv",
     "endpoints": [
         {
