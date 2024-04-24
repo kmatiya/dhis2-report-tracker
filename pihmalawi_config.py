@@ -13,7 +13,7 @@ config = {
             "base": "",
             "username": "",
             "password": "",
-            "report_file_name": "reports.csv",
+            "report_file_name": "report_collection.csv",
             "validate_elements": True,
             "element_validation_config": "conditions.csv",
             "use_start_date_in_request": True,
