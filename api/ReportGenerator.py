@@ -99,6 +99,8 @@ class ReportGenerator:
                                 full_report_dict.append(full_report)
                             else:
                                 report["report_in_the_system"] = "Yes"
+                                if x["report_type"] == "tracker":
+                                    report["report_detail"] = report_df["report_detail"].iat[0]
                                 date_created_str = df_x["created"].iat[0]
                                 date_created_str = date_created_str[0:10]
 
@@ -155,13 +157,13 @@ class ReportGenerator:
                                 tracker_report_dict.append(report)
                                 full_report_dict.append(full_report)
                     full_report_final_df = pd.DataFrame.from_records(full_report_dict)
-                    db_service.write_to_db(report_short_name, full_report_final_df)
+                    # db_service.write_to_db(report_short_name, full_report_final_df)
                     full_report_final_df.to_excel(full_report_writer, index=False, sheet_name=report_name)
             full_report_writer.close()
             # save column names table to the database.
             column_names_df = pd.DataFrame(column_name_dict)
             column_names_df = column_names_df.drop_duplicates(column_names_df)
-            db_service.write_to_db("column_names_summary", column_names_df)
+            # db_service.write_to_db("column_names_summary", column_names_df)
             # End of column saving code.
             tracker_final_df = pd.DataFrame.from_records(tracker_report_dict)
             tracker_final_df.to_excel(tracker_writer, index=False, sheet_name=tracker_report_file)
@@ -170,8 +172,8 @@ class ReportGenerator:
             conditions_check_df = pd.DataFrame(conditions_check)
             if each_endpoint["validate_elements"] is True:
                 conditions_check_df.to_excel("conditions_check.xlsx", index=False)
-                db_service.write_to_db("data_element_validation", conditions_check_df)
-            db_service.write_to_db("dhis2_report_summary", tracker_final_df)
+                # db_service.write_to_db("data_element_validation", conditions_check_df)
+            # db_service.write_to_db("dhis2_report_summary", tracker_final_df)
             print("Ending time" + str(datetime.now()))
 
     def validate_data_elements(self, conditions_check, df_x, end_date_str, org_unit_name, report, report_conditions,
