@@ -86,7 +86,6 @@ class HttpReportService:
                                     print("Unsupported output")
                         else:
                             print("Request not successful for " + each_report["name"] + "for " + org_unit_name)
-                    print(reports)
                     if len(reports) > 0:
                         self.__reports.append(reports)
         except Exception as e:
