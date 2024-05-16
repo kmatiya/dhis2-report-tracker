@@ -145,7 +145,7 @@ class ReportGenerator:
                                         name_combo = {"coded_name": coded_name, "full_name": column_name}
                                         # Rename duplicate column names recorded in duplicate_columns.csv file with (old) postfix
                                         if coded_name in duplicate_columns_df["column_id"].values:
-                                            custom_column_name = column_name+" "+"(old)"
+                                            custom_column_name = column_name+" (old)"
                                             name_combo = {"coded_name": coded_name, "full_name": custom_column_name}
                                             column_name_dict.append(name_combo)
                                         else:

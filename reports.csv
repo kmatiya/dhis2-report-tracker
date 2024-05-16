@@ -1,2 +1,2 @@
-resource,data_set,name,org_units,frequency,report_due_day,short_name
-/dataValueSets,TZwgYAeQXxL,Family Planning Monthly Report,Chifunga Health Centre,Monthly,15,family_planning_monthly
+resource,data_set,name,org_units,frequency,report_due_day,short_name,program,report_type
+/dataValueSets,TZwgYAeQXxL,Family Planning Monthly Report,Chifunga Health Centre,Monthly,15,family_planning_monthly,,aggregate
