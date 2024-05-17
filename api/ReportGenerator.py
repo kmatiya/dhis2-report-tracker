@@ -28,7 +28,8 @@ class ReportGenerator:
             period = split_date[0] + "Q" + str(timestamp.quarter)
         return period
 
-    def get_data_frame(self, db_service: DbService, data_elements_df, category_option_combinations_df):
+    def get_data_frame(self, db_service: DbService, data_elements_df, category_option_combinations_df,
+                       organization_units_df):
         date_format = "%Y-%m-%d"
         date_and_time_format = "%Y-%m-%d %H:%M:%S"
         conditions_check = []
@@ -40,7 +41,6 @@ class ReportGenerator:
         tracker_report_dict = []
         column_name_dict = []
         duplicate_columns_df = pd.read_csv(self.__config["duplicate_columns_file_name"])
-        org_units_df = pd.read_csv(self.__config["org_units_file_name"])
         print("Create files for each report")
 
         for each_endpoint in self.__config["endpoints"]:
@@ -70,7 +70,7 @@ class ReportGenerator:
                     report_to_print = each_report_index['dataValues']
                     report_df = pd.DataFrame.from_dict(report_to_print)
                     org_unit_name = org_units_name[index]
-                    org_unit_id = org_units_df.loc[org_units_df["Org Unit"] == org_unit_name]["Org Unit Id"].iat[0]
+                    org_unit_id = organization_units_df.loc[organization_units_df["name"] == org_unit_name]["id"].iat[0]
 
                     for row in periods:
                         period = self.format_dhis2_date(row, report_frequency)
