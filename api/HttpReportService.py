@@ -13,9 +13,8 @@ class HttpReportService:
         self.__config = config
         self.__reports = []
 
-    def get_reports_from_server(self):
+    def get_reports_from_server(self, organization_units_df):
         try:
-            org_units_df = pd.read_csv(self.__config["org_units_file_name"])
             for each_endpoint in self.__config["endpoints"]:
                 reports_df = pd.read_csv(each_endpoint["report_file_name"])
                 print(reports_df.head())
@@ -24,8 +23,7 @@ class HttpReportService:
                     locations_str = each_report.to_dict()["org_units"]
                     locations_list = locations_str.split(",")
                     for location in locations_list:
-                        org_unit = org_units_df.loc[org_units_df["Org Unit"] == str(location)]["Org Unit Id"].iat[0]
-                        org_unit_name = org_units_df.loc[org_units_df["Org Unit"] == str(location)]["Org Unit"].iat[0]
+                        org_unit = organization_units_df.loc[organization_units_df["name"] == str(location)]["id"].iat[0]
                         start_date = each_endpoint['default_start_date']
                         end_date = date.today()
                         url = each_endpoint["base"] + each_report["resource"]
@@ -51,13 +49,13 @@ class HttpReportService:
                             print("Missing Event resource")
 
                         print("Request for " + each_report[
-                            "name"] + "for " + org_unit_name + " for the following parameters: " + str(params))
+                            "name"] + "for " + location + " for the following parameters: " + str(params))
                         get_report = requests.get(url, params=params,
                                                   auth=HTTPBasicAuth(username=each_endpoint["username"],
                                                                      password=each_endpoint["password"]))
                         self.__status_code = get_report.status_code = get_report.status_code
                         if self.__status_code == 200:
-                            print("Successful Request for " + each_report["name"] + "for " + org_unit_name)
+                            print("Successful Request for " + each_report["name"] + "for " + location)
                             report_json = json.loads(get_report.text)
 
                             if len(report_json) == 0:
@@ -85,7 +83,7 @@ class HttpReportService:
                                 else:
                                     print("Unsupported output")
                         else:
-                            print("Request not successful for " + each_report["name"] + "for " + org_unit_name)
+                            print("Request not successful for " + each_report["name"] + "for " + location)
                     if len(reports) > 0:
                         self.__reports.append(reports)
         except Exception as e:
