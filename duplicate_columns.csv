@@ -1,2 +1,5 @@
 ﻿short_name,column_id,column_name
-family_planning_monthly,rq54RK1EFVy_SLe9Xo2ScK5,RHD FP Contraceptive Method Post Partum New Clients
+family_planning_monthly,FMyz0nFdGQO_bnAMGMLaQC7,RHD FP Contraceptive  Method Interval New Clients
+family_planning_monthly,BpJP5VYrNav_bnAMGMLaQC7,RHD FP Contraceptive  Method Ceasarean Section New Clients
+family_planning_monthly,mzPW5TGrZP2_bnAMGMLaQC7,RHD FP Contraceptive  Method Vasectomy New Clients
+family_planning_monthly,rq54RK1EFVy_bnAMGMLaQC7,RHD FP Contraceptive Method Post Partum New Clients
