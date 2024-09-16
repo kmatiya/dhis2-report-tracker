@@ -1,0 +1,3 @@
+resource,data_set,name,org_units,frequency,report_due_day,short_name,program,report_type
+/dataValueSets,QCVxnDPYBr6,Mental Health Quarterly Indicators,Malawi- Abwenzi Pa Za Umoyo,Quarterly,45,mental_health_quarterly,,aggregate
+/dataValueSets,zY48EBIkEvS,Cross-Site KPI,Malawi- Abwenzi Pa Za Umoyo,Monthly,30,cross_site_kpi_monthly,,aggregate
