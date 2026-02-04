@@ -1,8 +1,9 @@
+numpy==1.20.3
 pandas==2.0.1
 Requests==2.29.0
-openpyxl
+openpyxl==3.0.10
 xlsxwriter==3.1.0
-psycopg2-binary
-pyodbc
-SQLAlchemy
+psycopg2-binary==2.9.10
+pyodbc==5.0.1
+SQLAlchemy==1.4.46
 schedule==1.2.0
