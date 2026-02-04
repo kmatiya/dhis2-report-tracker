@@ -9,7 +9,7 @@ from requests.auth import HTTPBasicAuth
 
 
 class HttpReportService:
-    def __init__(self, config, max_workers=10):
+    def __init__(self, config, max_workers=8):  # 8 is safer for DHIS2
         self.__status_code = 0
         self.__config = config
         self.__reports = []
@@ -17,7 +17,6 @@ class HttpReportService:
 
     def get_reports_from_server(self, organization_units_df):
         try:
-            # Fast org unit lookup (same result as old .loc[…].iat[0])
             org_unit_map = dict(
                 zip(organization_units_df["name"], organization_units_df["id"])
             )
@@ -36,13 +35,16 @@ class HttpReportService:
                 for _, each_report in reports_df.iterrows():
                     reports = []
 
-                    locations_list = str(each_report["org_units"]).split(",")
+                    locations_list = [
+                        loc.strip()
+                        for loc in str(each_report["org_units"]).split(",")
+                    ]
 
                     with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-                        futures = []
+                        futures = {}
 
+                        # Submit jobs
                         for location in locations_list:
-                            location = location.strip()
                             org_unit = org_unit_map.get(location)
 
                             if not org_unit:
@@ -77,24 +79,34 @@ class HttpReportService:
                                 f"for {location} with parameters: {params}"
                             )
 
-                            futures.append(
-                                executor.submit(
-                                    self.__fetch_and_format_report,
-                                    session,
-                                    url,
-                                    params,
-                                    each_report["name"],
-                                    location,
-                                    each_report["report_type"]
-                                )
+                            future = executor.submit(
+                                self.__fetch_and_format_report,
+                                session,
+                                url,
+                                params,
+                                each_report["name"],
+                                location,
+                                each_report["report_type"]
                             )
 
-                        for future in as_completed(futures):
-                            result = future.result()
-                            if result:
-                                reports.append(result)
+                            futures[future] = location  # <-- preserve mapping
 
-                    if len(reports) > 0:
+                        # Collect results WITHOUT breaking order
+                        ordered_results = {loc: None for loc in locations_list}
+
+                        for future in as_completed(futures):
+                            location = futures[future]
+                            result = future.result()
+
+                            if result:
+                                ordered_results[location] = result
+
+                        # Append in ORIGINAL CSV order
+                        for location in locations_list:
+                            if ordered_results[location]:
+                                reports.append(ordered_results[location])
+
+                    if reports:
                         self.__reports.append(reports)
 
         except Exception as e:
@@ -105,7 +117,7 @@ class HttpReportService:
         self, session, url, params, report_name, location, report_type
     ):
         try:
-            response = session.get(url, params=params)
+            response = session.get(url, params=params, timeout=120)
             self.__status_code = response.status_code
 
             if response.status_code != 200:
@@ -133,9 +145,11 @@ class HttpReportService:
                     event_datetime = datetime.strptime(
                         event_date, "%Y-%m-%dT%H:%M:%S.%f"
                     )
+
                     e_period = event_datetime + relativedelta(
                         months=1, day=1, days=-1
                     )
+
                     period = e_period.strftime("%Y%m")
 
                     for report_obj in event.get("dataValues", []):
@@ -170,7 +184,7 @@ class HttpReportService:
                 url = each_endpoint["base"].rstrip("/") + "/" + resource
                 params = {"pageSize": page_size}
 
-                r = session.get(url, params=params)
+                r = session.get(url, params=params, timeout=120)
                 self.__status_code = r.status_code
 
                 if r.status_code == 200:
