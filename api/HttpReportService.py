@@ -1,4 +1,5 @@
 import json
+import time
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -9,193 +10,549 @@ from requests.auth import HTTPBasicAuth
 
 
 class HttpReportService:
-    def __init__(self, config, max_workers=8):  # 8 is safer for DHIS2
+
+    def __init__(self, config, max_workers=4, batch_size=10):
+
         self.__status_code = 0
         self.__config = config
         self.__reports = []
+
         self.max_workers = max_workers
+        self.batch_size = batch_size
+
 
     def get_reports_from_server(self, organization_units_df):
+
         try:
+
             org_unit_map = dict(
-                zip(organization_units_df["name"], organization_units_df["id"])
+                zip(
+                    organization_units_df["name"],
+                    organization_units_df["id"]
+                )
             )
 
+
             for each_endpoint in self.__config["endpoints"]:
-                reports_df = pd.read_csv(each_endpoint["report_file_name"])
-                print(reports_df.head())
+
+                reports_df = pd.read_csv(
+                    each_endpoint["report_file_name"]
+                )
+
+                print(
+                    f"Total reports: {len(reports_df)}"
+                )
+
 
                 session = requests.Session()
+
                 session.auth = HTTPBasicAuth(
                     username=each_endpoint["username"],
                     password=each_endpoint["password"]
                 )
-                session.headers.update({"Accept": "application/json"})
 
-                for _, each_report in reports_df.iterrows():
-                    reports = []
+                session.headers.update(
+                    {
+                        "Accept": "application/json"
+                    }
+                )
 
-                    locations_list = [
-                        loc.strip()
-                        for loc in str(each_report["org_units"]).split(",")
+
+                # Process reports in batches
+                for batch_start in range(
+                    0,
+                    len(reports_df),
+                    self.batch_size
+                ):
+
+
+                    batch_df = reports_df.iloc[
+                        batch_start:
+                        batch_start + self.batch_size
                     ]
 
-                    with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-                        futures = {}
 
-                        # Submit jobs
-                        for location in locations_list:
-                            org_unit = org_unit_map.get(location)
+                    print(
+                        f"\nProcessing reports "
+                        f"{batch_start + 1} - "
+                        f"{batch_start + len(batch_df)}"
+                    )
 
-                            if not org_unit:
-                                print(f"Org unit {location} not found")
-                                continue
 
-                            start_date = each_endpoint["default_start_date"]
-                            end_date = date.today()
-                            url = each_endpoint["base"] + each_report["resource"]
+                    for _, each_report in batch_df.iterrows():
 
-                            if each_report["report_type"] == "aggregate":
-                                params = {
-                                    "dataSet": each_report["data_set"],
-                                    "orgUnit": org_unit,
-                                    "startDate": start_date,
-                                    "endDate": end_date,
-                                    "frequency": each_report["frequency"],
-                                }
-                            elif each_report["report_type"] == "tracker":
-                                params = {
-                                    "program": each_report["program"],
-                                    "orgUnit": org_unit,
-                                    "startDate": start_date,
-                                    "endDate": end_date,
-                                }
-                            else:
-                                print("Missing Event resource")
-                                continue
+                        reports = []
 
-                            print(
-                                f"Request for {each_report['name']} "
-                                f"for {location} with parameters: {params}"
+
+                        locations_list = [
+                            loc.strip()
+                            for loc in str(
+                                each_report["org_units"]
+                            ).split(",")
+                        ]
+
+
+                        with ThreadPoolExecutor(
+                            max_workers=self.max_workers
+                        ) as executor:
+
+
+                            futures = {}
+
+
+                            for location in locations_list:
+
+
+                                org_unit = org_unit_map.get(
+                                    location
+                                )
+
+
+                                if not org_unit:
+
+                                    print(
+                                        f"Org unit {location} not found"
+                                    )
+
+                                    continue
+
+
+                                start_date = (
+                                    each_endpoint[
+                                        "default_start_date"
+                                    ]
+                                )
+
+                                end_date = date.today()
+
+
+                                url = (
+                                    each_endpoint["base"]
+                                    +
+                                    each_report["resource"]
+                                )
+
+
+                                if each_report["report_type"] == "aggregate":
+
+
+                                    params = {
+
+                                        "dataSet":
+                                            each_report["data_set"],
+
+                                        "orgUnit":
+                                            org_unit,
+
+                                        "startDate":
+                                            start_date,
+
+                                        "endDate":
+                                            end_date,
+
+                                        "frequency":
+                                            each_report["frequency"],
+                                    }
+
+
+                                elif each_report["report_type"] == "tracker":
+
+
+                                    params = {
+
+                                        "program":
+                                            each_report["program"],
+
+                                        "orgUnit":
+                                            org_unit,
+
+                                        "startDate":
+                                            start_date,
+
+                                        "endDate":
+                                            end_date,
+                                    }
+
+
+                                else:
+
+                                    print(
+                                        "Missing Event resource"
+                                    )
+
+                                    continue
+
+
+
+                                print(
+                                    f"Requesting "
+                                    f"{each_report['name']} - {location}"
+                                )
+
+
+                                future = executor.submit(
+
+                                    self.__fetch_and_format_report,
+
+                                    session,
+
+                                    url,
+
+                                    params,
+
+                                    each_report["name"],
+
+                                    location,
+
+                                    each_report["report_type"]
+
+                                )
+
+
+                                futures[future] = location
+
+
+
+                            ordered_results = {
+                                loc: None
+                                for loc in locations_list
+                            }
+
+
+
+                            for future in as_completed(futures):
+
+                                location = futures[future]
+
+                                result = future.result()
+
+
+                                if result:
+
+                                    ordered_results[location] = result
+
+
+
+                            for location in locations_list:
+
+                                if ordered_results[location]:
+
+                                    reports.append(
+                                        ordered_results[location]
+                                    )
+
+
+                        if reports:
+
+                            self.__reports.append(
+                                reports
                             )
 
-                            future = executor.submit(
-                                self.__fetch_and_format_report,
-                                session,
-                                url,
-                                params,
-                                each_report["name"],
-                                location,
-                                each_report["report_type"]
-                            )
 
-                            futures[future] = location  # <-- preserve mapping
+                    # Allow DHIS2 server to recover
+                    print(
+                        "Waiting before next batch..."
+                    )
 
-                        # Collect results WITHOUT breaking order
-                        ordered_results = {loc: None for loc in locations_list}
+                    time.sleep(20)
 
-                        for future in as_completed(futures):
-                            location = futures[future]
-                            result = future.result()
 
-                            if result:
-                                ordered_results[location] = result
-
-                        # Append in ORIGINAL CSV order
-                        for location in locations_list:
-                            if ordered_results[location]:
-                                reports.append(ordered_results[location])
-
-                    if reports:
-                        self.__reports.append(reports)
 
         except Exception as e:
+
             self.__status_code = 500
-            print(f"Error in processing request: {e}")
+
+            print(
+                f"Error in processing request: {e}"
+            )
+
+
 
     def __fetch_and_format_report(
-        self, session, url, params, report_name, location, report_type
+        self,
+        session,
+        url,
+        params,
+        report_name,
+        location,
+        report_type
     ):
+
+
         try:
-            response = session.get(url, params=params, timeout=120)
+
+            response = session.get(
+
+                url,
+
+                params=params,
+
+                timeout=(30,300)
+
+            )
+
+
             self.__status_code = response.status_code
 
+
+
             if response.status_code != 200:
-                print(f"Request not successful for {report_name} for {location}")
+
+                print(
+                    f"Request not successful "
+                    f"for {report_name} - {location}"
+                )
+
                 return None
 
-            print(f"Successful Request for {report_name} for {location}")
+
+
+            print(
+                f"Successful "
+                f"{report_name} - {location}"
+            )
+
+
             report_json = response.json()
 
+
+
             if not report_json:
-                print("Report is blank, please download it manually from server")
+
+                print(
+                    "Report is blank"
+                )
+
                 return None
 
+
+
             if report_type == "aggregate":
+
                 return report_json
 
+
+
             if report_type == "tracker":
+
+
                 data_elements_dict = []
 
-                for event in report_json.get("events", []):
+
+                for event in report_json.get(
+                    "events",
+                    []
+                ):
+
+
                     event_date = event["eventDate"]
+
                     org_unit = event["orgUnit"]
-                    report_detail = event.get("attributeOptionCombo")
+
+                    report_detail = event.get(
+                        "attributeOptionCombo"
+                    )
+
 
                     event_datetime = datetime.strptime(
-                        event_date, "%Y-%m-%dT%H:%M:%S.%f"
+
+                        event_date,
+
+                        "%Y-%m-%dT%H:%M:%S.%f"
+
                     )
 
-                    e_period = event_datetime + relativedelta(
-                        months=1, day=1, days=-1
+
+                    e_period = (
+
+                        event_datetime
+
+                        +
+
+                        relativedelta(
+                            months=1,
+                            day=1,
+                            days=-1
+                        )
+
                     )
 
-                    period = e_period.strftime("%Y%m")
 
-                    for report_obj in event.get("dataValues", []):
+                    period = e_period.strftime(
+                        "%Y%m"
+                    )
+
+
+
+                    for report_obj in event.get(
+                        "dataValues",
+                        []
+                    ):
+
+
                         report_obj["period"] = period
+
                         report_obj["orgUnit"] = org_unit
+
                         report_obj["report_detail"] = report_detail
-                        data_elements_dict.append(report_obj)
 
-                return {"dataValues": data_elements_dict}
 
-            print("Unsupported output")
+                        data_elements_dict.append(
+                            report_obj
+                        )
+
+
+
+                return {
+                    "dataValues":
+                        data_elements_dict
+                }
+
+
+
+            print(
+                "Unsupported output"
+            )
+
             return None
+
+
 
         except Exception as e:
-            print(f"Error fetching report {report_name} for {location}: {e}")
+
+
+            print(
+                f"Error fetching report "
+                f"{report_name} for {location}: {e}"
+            )
+
+
             return None
+
+
+
 
     def get_reports(self):
-        return self.__status_code, self.__reports
 
-    def get_data(self, resource, page_size):
+        return (
+            self.__status_code,
+            self.__reports
+        )
+
+
+
+
+    def get_data(
+        self,
+        resource,
+        page_size
+    ):
+
+
         response = []
+
+
         try:
+
+
             for each_endpoint in self.__config["endpoints"]:
+
+
                 session = requests.Session()
+
+
                 session.auth = HTTPBasicAuth(
+
                     username=each_endpoint["username"],
+
                     password=each_endpoint["password"]
+
                 )
-                session.headers.update({"Accept": "application/json"})
 
-                url = each_endpoint["base"].rstrip("/") + "/" + resource
-                params = {"pageSize": page_size}
 
-                r = session.get(url, params=params, timeout=120)
+                session.headers.update(
+                    {
+                        "Accept": "application/json"
+                    }
+                )
+
+
+                url = (
+
+                    each_endpoint["base"].rstrip("/")
+
+                    +
+
+                    "/"
+
+                    +
+
+                    resource
+
+                )
+
+
+                params = {
+                    "pageSize": page_size
+                }
+
+
+                r = session.get(
+
+                    url,
+
+                    params=params,
+
+                    timeout=(30,300)
+
+                )
+
+
                 self.__status_code = r.status_code
 
+
+
                 if r.status_code == 200:
-                    print(f"Successful Request for {resource}")
+
+
+                    print(
+                        f"Successful Request for {resource}"
+                    )
+
+
                     response = r.json()
-                    return self.__status_code, response
+
+
+                    return (
+                        self.__status_code,
+                        response
+                    )
+
+
                 else:
-                    print(f"Failed to get {resource}")
-                    return self.__status_code, response
+
+
+                    print(
+                        f"Failed to get {resource}"
+                    )
+
+
+                    return (
+                        self.__status_code,
+                        response
+                    )
+
+
 
         except Exception as e:
+
+
             self.__status_code = 500
+
             response.append(e)
-            return self.__status_code, response
+
+
+            return (
+                self.__status_code,
+                response
+            )
